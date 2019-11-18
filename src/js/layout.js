@@ -7,6 +7,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
+import { LoggedNav } from "./component/loggedNav";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -20,7 +21,7 @@ export const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter>
 				<ScrollToTop>
-					<Navbar />
+					<LoggedNav />
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Demo} />
