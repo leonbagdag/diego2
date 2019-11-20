@@ -8,6 +8,7 @@ import { ControlPanel } from "./views/controlPanel";
 import { ServiceForm } from "./views/serviceForm";
 import { UserProfile } from "./views/userProfile";
 import { ServiceView } from "./views/serviceView";
+import { HabAdmin } from "./views/habAdmin";
 
 import injectContext from "./store/appContext";
 
@@ -27,9 +28,10 @@ export const Layout = () => {
 					<LoggedNav />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route path="/navegar" component={Navegar} />
+						<Route exact path="/navegar" component={Navegar} />
 						<Route path="/navegar/:serviceID" component={ServiceView} />
-						<Route path="/controlPanel" component={ControlPanel} />
+						<Route exact path="/controlPanel" component={ControlPanel} />
+						<Route path="/controlPanel/habilidades" component={HabAdmin} />
 						<Route path="/serviceForm" component={ServiceForm} />
 						<Route path="/perfil" component={UserProfile} />
 						<Route render={() => <h1>Not found!</h1>} />

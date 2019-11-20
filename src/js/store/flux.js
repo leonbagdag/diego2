@@ -1,16 +1,26 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			habilidades: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					name: "Trámites Legales",
+					habilidad: true,
+					id: 1
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					name: "Cuidado de Mascotas",
+					habilidad: false,
+					id: 2
+				},
+				{
+					name: "Cuidado del hogar",
+					habilidad: true,
+					id: 3
+				},
+				{
+					name: "Electricidad",
+					habilidad: true,
+					id: 4
 				}
 			]
 		},
