@@ -56,6 +56,7 @@ export const LoggedNav = () => {
 								<Link className="dropdown-item" to="/controlPanel">
 									Mi Panel de Control
 								</Link>
+								<div className="dropdown-divider"></div>
 								<Link className="dropdown-item" to="/">
 									Desconectarme
 								</Link>

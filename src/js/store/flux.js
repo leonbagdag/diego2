@@ -1,16 +1,26 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			habilidades: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					name: "Trámites Bancarios",
+					habilidad: true,
+					id: 1
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					name: "Cuidado de Mascotas",
+					habilidad: false,
+					id: 2
+				},
+				{
+					name: "Planchado de Ropa",
+					habilidad: true,
+					id: 3
+				},
+				{
+					name: "Electricidad",
+					habilidad: true,
+					id: 4
 				}
 			]
 		},
@@ -23,20 +33,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
 			}
 		}
 	};
