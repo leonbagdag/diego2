@@ -8,14 +8,19 @@ export const Navegar = () => {
 	return (
 		<div>
 			<div className="container-fluid">
-				<div className="row">
-					<div className="col-md-3">
+				<div className="row justify-content-around">
+					<div className="col-lg-3 border">
 						<h3>Filtrar por:</h3>
-						<p>Mis habilidades:</p>
-						<HabFilter />
-						<p>Mi ubicación:</p>
+						<div className="border">
+							<p>Mis habilidades:</p>
+							<HabFilter />
+							<Link to="/controlPanel/habilidades">Administrar mis habilidades</Link>
+						</div>
+						<div className="border">
+							<p>Mi ubicación:</p>
+						</div>
 					</div>
-					<div className="col-md-9">
+					<div className="col-lg-8 border">
 						<h1>services</h1>
 					</div>
 				</div>

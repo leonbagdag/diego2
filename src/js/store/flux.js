@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			habilidades: [
 				{
-					name: "Trámites Legales",
+					name: "Trámites Bancarios",
 					habilidad: true,
 					id: 1
 				},
@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					id: 2
 				},
 				{
-					name: "Cuidado del hogar",
+					name: "Planchado de Ropa",
 					habilidad: true,
 					id: 3
 				},
