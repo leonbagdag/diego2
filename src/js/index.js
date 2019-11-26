@@ -8,6 +8,8 @@ import "bootstrap";
 
 //include your index.scss file into the bundle
 import "../styles/index.scss";
+import "../styles/habFilter.scss";
+import "../styles/navBar.scss";
 
 //import your own components
 import Layout from "./layout";
