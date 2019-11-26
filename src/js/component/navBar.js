@@ -5,8 +5,8 @@ import { Context } from "../store/appContext";
 export const NavBar = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-			<div className="container d-sm-none">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
+			<div className="container d-sm-none navbar-nav">
 				{/*navbar pantallas sm <-*/}
 				<div className="nav-item mx-auto">
 					<Link to="/" className="navbar-brand">
@@ -14,10 +14,25 @@ export const NavBar = () => {
 					</Link>
 				</div>
 				<div className="d-flex justify-content-around w-100">
-					<div className="nav-item active">
-						<Link to="/navegar" className="nav-link">
+					<div className="dropdown nav-item">
+						<span
+							className="nav-link"
+							id="search-nav"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false">
 							<i className="fas fa-search fa-2x"></i>
-						</Link>
+						</span>
+						<div className="dropdown-menu dropdown-menu-left" aria-labelledby="search-nav">
+							<Link className="dropdown-item" to="/buscar/servicio">
+								Buscar Servicio...
+							</Link>
+							<div className="dropdown-divider"></div>
+							<Link className="dropdown-item" to="/buscar/proveedor">
+								Buscar Proveedor...
+							</Link>
+						</div>
 					</div>
 					<div className="nav-item">
 						<Link to="/controlPanel" className="nav-link">
@@ -29,9 +44,9 @@ export const NavBar = () => {
 							<i className="fas fa-clipboard fa-2x"></i>
 						</Link>
 					</div>
-					<div className="dropdown">
+					<div className="dropdown nav-item">
 						<span
-							className="nav-link"
+							className="nav-link "
 							id="userProfile"
 							role="button"
 							data-toggle="dropdown"
@@ -55,7 +70,7 @@ export const NavBar = () => {
 				</div>
 			</div>
 			<div className="container d-none d-sm-flex">
-				{/*Navbar para md -> */}
+				{/*Navbar para md en adelante-> */}
 				<Link to="/" className="navbar-brand">
 					App-Logo
 				</Link>
@@ -71,11 +86,28 @@ export const NavBar = () => {
 				</button>
 				<div className="collapse navbar-collapse" id="mainNavbar">
 					<ul className="navbar-nav ml-auto align-items-center">
-						<li className="nav-item active ml-3">
-							<Link to="/navegar" className="nav-link">
-								<i className="fas fa-search"></i>
-								<span className="ml-2">Buscar</span>
-							</Link>
+						<li className="nav-item dropdown">
+							<span
+								className="nav-link"
+								id="search-nav"
+								role="button"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false">
+								<span>
+									<i className="fas fa-search mr-2"></i>Buscar
+									<i className="ml-2 dropdown-toggle"></i>
+								</span>
+							</span>
+							<div className="dropdown-menu dropdown-menu-left" aria-labelledby="search-nav">
+								<Link className="dropdown-item" to="/buscar/servicio">
+									Servicio
+								</Link>
+								<div className="dropdown-divider"></div>
+								<Link className="dropdown-item" to="/buscar/proveedor">
+									Proveedor
+								</Link>
+							</div>
 						</li>
 						<li className="nav-item ml-3">
 							<Link to="/controlPanel" className="nav-link">
@@ -89,7 +121,7 @@ export const NavBar = () => {
 								<span className="ml-2">Solicitar un Servicio</span>
 							</Link>
 						</li>
-						<li className="nav-item dropdown ml-2">
+						<li className="nav-item dropdown ml-2 user-cont">
 							<span
 								className="nav-link"
 								id="userProfile"
@@ -102,7 +134,7 @@ export const NavBar = () => {
 									<div className="ml-2 d-inline-flex text-align-left">
 										<span className="p-0">
 											{store.userName}
-											<i className="fas fa-caret-down ml-2"></i>
+											<i className="ml-2 dropdown-toggle"></i>
 										</span>
 									</div>
 								</div>

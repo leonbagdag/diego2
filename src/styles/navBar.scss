@@ -5,7 +5,6 @@
     background-color: #EEE;
 }
 .userProf-container {
-    cursor: pointer;
     border: 1px solid grey;
     padding: 4px 8px;
     border-radius: 20px;
@@ -15,3 +14,17 @@
     color: white;
     transition: all 0.5s;
 }
+.navbar-nav .nav-item:hover {
+    cursor: pointer;
+}
+.navbar-nav .nav-item:not(.user-cont) .nav-link:hover {
+    border-bottom: 2px solid blue;
+    color: blue;
+}
+.dropdown-toggle::after {
+    transition: transform 0.15s linear; 
+ }
+  
+ .show.dropdown .dropdown-toggle::after {
+   transform: translateY(3px);
+ }
