@@ -14,6 +14,10 @@ import injectContext from "./store/appContext";
 
 import { NavBar } from "./component/navBar";
 import { Footer } from "./component/footer";
+import { Card } from "./component/Card";
+import { UserCard } from "./component/UserCard";
+import { FormImputs } from "./component/FormImputs";
+import { CustomButton } from "./component/CustomButton";
 
 //create your first component
 export const Layout = () => {
