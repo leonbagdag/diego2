@@ -4,3 +4,14 @@
     border-radius: 35px;
     background-color: #EEE;
 }
+.userProf-container {
+    cursor: pointer;
+    border: 1px solid grey;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+.userProf-container:hover {
+    background-color: blue;
+    color: white;
+    transition: all 0.5s;
+}
