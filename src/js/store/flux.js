@@ -22,7 +22,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					habilidad: true,
 					id: 4
 				}
-			]
+			],
+			userName: "Luis L."
 		},
 		actions: {
 			loadSomeData: () => {

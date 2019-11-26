@@ -1,32 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const NavBar = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
 			<div className="container d-sm-none">
-				<div className="">
+				{/*navbar pantallas sm <-*/}
+				<div className="nav-item mx-auto">
 					<Link to="/" className="navbar-brand">
 						App-Logo
 					</Link>
 				</div>
 				<div className="d-flex justify-content-around w-100">
-					<div className=" active">
+					<div className="nav-item active">
 						<Link to="/navegar" className="nav-link">
 							<i className="fas fa-search fa-2x"></i>
 						</Link>
 					</div>
-					<div className="">
+					<div className="nav-item">
 						<Link to="/controlPanel" className="nav-link">
 							<i className="fas fa-tasks fa-2x"></i>
 						</Link>
 					</div>
-					<div className="">
+					<div className="nav-item">
 						<Link to="/serviceForm" className="nav-link">
 							<i className="fas fa-clipboard fa-2x"></i>
 						</Link>
 					</div>
-					<div className=" dropdown">
+					<div className="dropdown">
 						<span
 							className="nav-link"
 							id="userProfile"
@@ -52,6 +55,7 @@ export const NavBar = () => {
 				</div>
 			</div>
 			<div className="container d-none d-sm-flex">
+				{/*Navbar para md -> */}
 				<Link to="/" className="navbar-brand">
 					App-Logo
 				</Link>
@@ -59,15 +63,15 @@ export const NavBar = () => {
 					className="navbar-toggler"
 					type="button"
 					data-toggle="collapse"
-					data-target="#loggedNavbar"
-					aria-controls="loggedNavbar"
+					data-target="#mainNavbar"
+					aria-controls="mainNavbar"
 					aria-expanded="false"
 					aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div className="collapse navbar-collapse" id="loggedNavbar">
-					<ul className="navbar-nav ml-auto text-center">
-						<li className="nav-item active ml-3 mainNav-item">
+				<div className="collapse navbar-collapse" id="mainNavbar">
+					<ul className="navbar-nav ml-auto align-items-center">
+						<li className="nav-item active ml-3">
 							<Link to="/navegar" className="nav-link">
 								<i className="fas fa-search"></i>
 								<span className="ml-2">Buscar</span>
@@ -85,15 +89,23 @@ export const NavBar = () => {
 								<span className="ml-2">Solicitar un Servicio</span>
 							</Link>
 						</li>
-						<li className="nav-item dropdown ml-3">
+						<li className="nav-item dropdown ml-2">
 							<span
-								className="nav-link dropdown-toggle"
+								className="nav-link"
 								id="userProfile"
 								role="button"
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false">
-								userProfile
+								<div className="d-flex align-items-center userProf-container">
+									<div className="userProfile d-inline-flex"></div>
+									<div className="ml-2 d-inline-flex text-align-left">
+										<span className="p-0">
+											{store.userName}
+											<i className="fas fa-caret-down ml-2"></i>
+										</span>
+									</div>
+								</div>
 							</span>
 							<div className="dropdown-menu dropdown-menu-right" aria-labelledby="userProfile">
 								<Link className="dropdown-item" to="/perfil">
