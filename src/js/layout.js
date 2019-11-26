@@ -12,7 +12,7 @@ import { HabAdmin } from "./views/habAdmin";
 
 import injectContext from "./store/appContext";
 
-import { LoggedNav } from "./component/loggedNav";
+import { NavBar } from "./component/navBar";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -25,11 +25,11 @@ export const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter>
 				<ScrollToTop>
-					<LoggedNav />
+					<NavBar />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/navegar" component={Navegar} />
-						<Route path="/navegar/:serviceID" component={ServiceView} />
+						<Route exact path="/buscar" component={Navegar} />
+						<Route path="/buscar/:serviceID" component={ServiceView} />
 						<Route exact path="/controlPanel" component={ControlPanel} />
 						<Route path="/controlPanel/habilidades" component={HabAdmin} />
 						<Route path="/serviceForm" component={ServiceForm} />
