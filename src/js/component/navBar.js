@@ -6,7 +6,7 @@ export const NavBar = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
-			<div className="container d-sm-none navbar-nav">
+			<div className={store.user.logged ? "container d-sm-none navbar-nav" : "d-none"}>
 				{/*navbar pantallas sm <-*/}
 				<div className="nav-item mx-auto">
 					<Link to="/" className="navbar-brand">
@@ -133,7 +133,7 @@ export const NavBar = () => {
 									<div className="userProfile d-inline-flex"></div>
 									<div className="ml-2 d-inline-flex text-align-left">
 										<span className="p-0">
-											{store.userName}
+											{store.user.name}
 											<i className="ml-2 dropdown-toggle"></i>
 										</span>
 									</div>
