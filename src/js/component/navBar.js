@@ -30,13 +30,48 @@ const SearchDropdown = () => {
 		</div>
 	);
 };
-// const MobileNav = props => {
-//     return (
+const MobileNavbar = () => {
+	return (
+		<div className="d-flex justify-content-around w-100">
+			<div className="dropdown nav-item">
+				<span
+					className="nav-link"
+					id="search-nav"
+					role="button"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+					<i className="fas fa-search fa-2x"></i>
+				</span>
+				<SearchDropdown />
+			</div>
+			<div className="nav-item">
+				<Link to="/controlPanel" className="nav-link">
+					<i className="fas fa-tasks fa-2x"></i>
+				</Link>
+			</div>
+			<div className="nav-item">
+				<Link to="/serviceForm" className="nav-link">
+					<i className="fas fa-clipboard fa-2x"></i>
+				</Link>
+			</div>
+			<div className="dropdown nav-item">
+				<span
+					className="nav-link "
+					id="userProfile"
+					role="button"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+					<div className="userProfile"></div>
+				</span>
+				<UserDropdown />
+			</div>
+		</div>
+	);
+};
 
-//     );
-// };
-
-const NavbarItems = props => {
+const DesktopNavbar = props => {
 	if (props.isLogged) {
 		return (
 			<ul className="navbar-nav ml-auto align-items-center">
@@ -119,42 +154,7 @@ export const NavBar = () => {
 						App-Logo
 					</Link>
 				</div>
-				<div className="d-flex justify-content-around w-100">
-					<div className="dropdown nav-item">
-						<span
-							className="nav-link"
-							id="search-nav"
-							role="button"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							<i className="fas fa-search fa-2x"></i>
-						</span>
-						<SearchDropdown />
-					</div>
-					<div className="nav-item">
-						<Link to="/controlPanel" className="nav-link">
-							<i className="fas fa-tasks fa-2x"></i>
-						</Link>
-					</div>
-					<div className="nav-item">
-						<Link to="/serviceForm" className="nav-link">
-							<i className="fas fa-clipboard fa-2x"></i>
-						</Link>
-					</div>
-					<div className="dropdown nav-item">
-						<span
-							className="nav-link "
-							id="userProfile"
-							role="button"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							<div className="userProfile"></div>
-						</span>
-						<UserDropdown />
-					</div>
-				</div>
+				<MobileNavbar />
 			</div>
 			<div className={store.user.logged ? "container d-none d-sm-flex" : "container"}>
 				{/*Navbar para md en adelante-> */}
@@ -172,7 +172,7 @@ export const NavBar = () => {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div className="collapse navbar-collapse" id="mainNavbar">
-					<NavbarItems isLogged={store.user.logged} userName={store.user.name} />
+					<DesktopNavbar isLogged={store.user.logged} userName={store.user.name} />
 				</div>
 			</div>
 		</nav>
