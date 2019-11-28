@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const NavBar = () => {
-	const { store, actions } = useContext(Context);
-
-	const userDropdown = (
+const UserDropdown = () => {
+	return (
 		<div className="dropdown-menu dropdown-menu-right" aria-labelledby="userProfile">
 			<Link className="dropdown-item" to="/perfil">
 				Mi Perfil
@@ -17,8 +15,10 @@ export const NavBar = () => {
 			<span className="dropdown-item">Desconectarme</span>
 		</div>
 	);
+};
 
-	const searchDropdown = (
+const SearchDropdown = () => {
+	return (
 		<div className="dropdown-menu dropdown-menu-left" aria-labelledby="search-nav">
 			<Link className="dropdown-item" to="/buscar/servicio">
 				Buscar Servicio...
@@ -29,10 +29,16 @@ export const NavBar = () => {
 			</Link>
 		</div>
 	);
+};
+// const MobileNav = props => {
+//     return (
 
-	let loggedItems;
-	if (store.user.logged) {
-		loggedItems /* Items cuando el usuario está conectado*/ = (
+//     );
+// };
+
+const NavbarItems = props => {
+	if (props.isLogged) {
+		return (
 			<ul className="navbar-nav ml-auto align-items-center">
 				<li className="nav-item dropdown">
 					<span
@@ -47,7 +53,7 @@ export const NavBar = () => {
 							<i className="ml-2 dropdown-toggle"></i>
 						</span>
 					</span>
-					{searchDropdown}
+					<SearchDropdown />
 				</li>
 				<li className="nav-item ml-3">
 					<Link to="/controlPanel" className="nav-link">
@@ -73,19 +79,18 @@ export const NavBar = () => {
 							<div className="userProfile d-inline-flex"></div>
 							<div className="ml-2 d-inline-flex text-align-left">
 								<span className="p-0">
-									{store.user.name}
+									{props.userName}
 									<i className="ml-2 dropdown-toggle"></i>
 								</span>
 							</div>
 						</div>
 					</span>
-					{userDropdown}
+					<UserDropdown />
 				</li>
 			</ul>
 		);
 	} else {
-		/* Items cuando el usuario está desconectado*/
-		loggedItems = (
+		return (
 			<ul className="navbar-nav ml-auto align-items-center">
 				<li className="nav-item">
 					<Link to="/controlPanel" className="nav-link">
@@ -97,14 +102,13 @@ export const NavBar = () => {
 						<span>Conectarme</span>
 					</Link>
 				</li>
-				<li className="nav-item">
-					<Link to="/serviceForm" className="nav-link">
-						<span>Ayuda</span>
-					</Link>
-				</li>
 			</ul>
 		);
 	}
+};
+
+export const NavBar = () => {
+	const { store, actions } = useContext(Context);
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
@@ -126,7 +130,7 @@ export const NavBar = () => {
 							aria-expanded="false">
 							<i className="fas fa-search fa-2x"></i>
 						</span>
-						{searchDropdown}
+						<SearchDropdown />
 					</div>
 					<div className="nav-item">
 						<Link to="/controlPanel" className="nav-link">
@@ -148,7 +152,7 @@ export const NavBar = () => {
 							aria-expanded="false">
 							<div className="userProfile"></div>
 						</span>
-						{userDropdown}
+						<UserDropdown />
 					</div>
 				</div>
 			</div>
@@ -168,7 +172,7 @@ export const NavBar = () => {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div className="collapse navbar-collapse" id="mainNavbar">
-					{loggedItems}
+					<NavbarItems isLogged={store.user.logged} userName={store.user.name} />
 				</div>
 			</div>
 		</nav>
