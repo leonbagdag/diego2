@@ -2,27 +2,24 @@ import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-import { CatFilter } from "../component/catFilter";
+import { CategoryFilter } from "../component/categoryFilter";
+import { LocationFilter } from "../component/locationFilter";
 
 export const BuscarServicio = () => {
 	return (
-		<div>
-			<div className="container-fluid">
-				<div className="row justify-content-around">
-					<div className="col-lg-3 border">
-						<h3>Filtrar por:</h3>
-						<div className="border">
-							<p>Mis habilidades:</p>
-							<CatFilter />
-							<Link to="/controlPanel/categorias">Administrar categorias</Link>
-						</div>
-						<div className="border">
-							<p>Mi ubicación:</p>
-						</div>
+		<div className="container-fluid h-100">
+			<div className="row">
+				<div className="col-lg-2">
+					<h3>Filtrar por:</h3>
+					<div className="border">
+						<CategoryFilter />
 					</div>
-					<div className="col-lg-8 border">
-						<h1>services</h1>
+					<div className="border">
+						<LocationFilter />
 					</div>
+				</div>
+				<div className="col-lg-10">
+					<h1>services</h1>
 				</div>
 			</div>
 		</div>

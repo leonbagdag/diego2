@@ -1,26 +1,36 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			habilidades: [
+			categorias: [
 				{
 					name: "Trámites Bancarios",
-					habilidad: true,
+					icon: "fas fa-money-check-alt",
+					filter: true,
 					id: 1
 				},
 				{
-					name: "Cuidado de Mascotas",
-					habilidad: false,
+					name: "Trámites Legales",
+					icon: "fas fa-balance-scale",
+					filter: false,
 					id: 2
 				},
 				{
-					name: "Planchado de Ropa",
-					habilidad: true,
+					name: "Cuidado de Mascotas",
+					icon: "fas fa-paw",
+					filter: true,
 					id: 3
 				},
 				{
 					name: "Electricidad",
-					habilidad: true,
+					icon: "fa fa-bolt",
+					filter: true,
 					id: 4
+				},
+				{
+					name: "Climatización",
+					icon: "fas fa-snowflake",
+					filter: false,
+					id: 5
 				}
 			],
 			user: { name: "Luis L.", logged: true }
