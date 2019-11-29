@@ -32,7 +32,7 @@ export const Home = () => (
 				</Carousel.Item>
 			</Carousel>
 		</div>
-		{/*el cuadro de busqueda debe ser un componente, lo dejo como vista pero falta desarrollo*/}
+		{/*el cuadro de busqueda debe ser un componente, lo dejo como vista pero falta desarrollo pricipalmente datos que buscar*/}
 		<div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
 			<div className="col-md-5 p-lg-5 mx-auto my-5">
 				<h1 className="display-4 font-weight-normal">¿Buscas algun Servicio?</h1>
