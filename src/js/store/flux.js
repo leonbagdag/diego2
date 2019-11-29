@@ -31,6 +31,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					icon: "fas fa-snowflake",
 					filter: false,
 					id: 5
+				},
+				{
+					name: "Climatización",
+					icon: "fas fa-snowflake",
+					filter: true,
+					id: 6
 				}
 			],
 			user: { name: "Luis L.", logged: true }

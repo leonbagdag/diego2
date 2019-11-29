@@ -10,9 +10,9 @@ export const CategoryFilter = () => {
 	};
 
 	return (
-		<div className="container text-center">
+		<div className="text-center mt-2 overflow-auto">
 			<h6>Mis Categorías: </h6>
-			<div className="d-flex flex-wrap justify-content-center">
+			<div className="d-flex flex-wrap justify-content-center overflow-auto mb-2" style={{ maxHeight: "300px" }}>
 				{store.categorias.map(item => {
 					return (
 						<div
@@ -27,6 +27,7 @@ export const CategoryFilter = () => {
 				})}
 			</div>
 			<Link to="/panel/categorias">Administrar mis categorias</Link>
+			<button className="btn btn-link">Reestablecer</button>
 		</div>
 	);
 };

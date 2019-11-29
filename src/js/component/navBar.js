@@ -30,7 +30,7 @@ const SearchDropdown = () => {
 		</div>
 	);
 };
-const MobileNavbar = () => {
+const MobileNavbar = props => {
 	return (
 		<div className="d-flex justify-content-around w-100">
 			<div className="dropdown nav-item">
@@ -157,7 +157,7 @@ export const NavBar = () => {
 				<MobileNavbar />
 			</div>
 			<div className={store.user.logged ? "container d-none d-sm-flex" : "container"}>
-				{/*Navbar para md en adelante-> */}
+				{/*Navbar para md en adelante con o sin log-in-> */}
 				<Link to="/" className="navbar-brand">
 					App-Logo
 				</Link>

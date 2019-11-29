@@ -3,5 +3,9 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const LocationFilter = () => {
-	return <h6>Mi Ubicación</h6>;
+	return (
+		<div className="card card-body">
+			<p>Mi ubicación:</p>
+		</div>
+	);
 };
