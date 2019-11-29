@@ -5,7 +5,8 @@ import { Context } from "../store/appContext";
 /*armar barra de busqueda cuando existan datos, queda estructura básica para desarrollar*/
 
 const SearchBar = () => {
-    return <imput />;
+    const { store, actions } = useContext(Context);
+    return 
 };
 
 export default SearchBar;
