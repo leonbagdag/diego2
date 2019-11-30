@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Navegar } from "./views/navegar";
+import { BuscarServicio } from "./views/buscarServicio";
 import { ControlPanel } from "./views/controlPanel";
 import { ServiceForm } from "./views/serviceForm";
 import { UserProfile } from "./views/userProfile";
@@ -28,7 +28,7 @@ export const Layout = () => {
 					<NavBar />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/buscar" component={Navegar} />
+						<Route exact path="/buscar/servicio" component={BuscarServicio} />
 						<Route path="/buscar/:serviceID" component={ServiceView} />
 						<Route exact path="/controlPanel" component={ControlPanel} />
 						<Route path="/controlPanel/habilidades" component={HabAdmin} />

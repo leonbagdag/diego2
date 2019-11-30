@@ -1,0 +1,31 @@
+.hPill {
+    height: 60px;
+    width: 60px;
+    border: 1px solid blue;
+    color: blue;
+    border-radius: 60px;
+    margin: 5px;
+    cursor: pointer;
+}
+.h-active:hover {
+    background-color: blue;
+    color: white;
+}
+.h-inactive:hover {
+    background-color: grey;
+    color: white;
+}
+.hPill i {
+    padding-top: 12px;
+}
+.h-inactive {
+    border: dashed grey;
+    color: #EEE;
+    border-width: 1px;
+    padding: 0px;
+}
+.sideFilterCard {
+    box-shadow: 0 4px 8px 0px grey;
+    padding-right: 5px;
+    padding-left: 5px;
+}
