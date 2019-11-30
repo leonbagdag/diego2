@@ -39,7 +39,73 @@ const getState = ({ getStore, getActions, setStore }) => {
 					id: 6
 				}
 			],
-			user: { name: "Luis L.", logged: true }
+            user: { name: "Luis L.", logged: true },
+            region: [
+                {
+                    name: "Aisén del G. Carlos Ibáñez del Campo",
+                    id: 1
+                },
+                {
+                    name: "Antofagasta",
+                    id: 2
+                },
+                {
+                    name: "Arica y Parinacota",
+                    id: 3
+                },
+                {
+                    name: "Atacama",
+                    id: 4
+                },
+                {
+                    name: "Biobío",
+                    id: 5
+                },
+                {
+                    name: "Coquimbo",
+                    id: 6
+                },
+                {
+                    name: "La Araucanía",
+                    id: 7
+                },
+                {
+                    name: "Libertador General Bernardo O’Higgins",
+                    id: 8
+                },
+                {
+                    name: "Los Lagos",
+                    id: 9
+                },
+                {
+                    name: "Los Ríos",
+                    id: 10
+                },
+                {
+                    name: "Magallanes y de la Antártica Chilena",
+                    id: 11
+                },
+                {
+                    name: "Maule",
+                    id: 12
+                },
+                {
+                    name: "Metropolitana de Santiago",
+                    id: 13
+                },
+                {
+                    name: "Ñuble",
+                    id: 14
+                },
+                {
+                    name: "Tarapacá",
+                    id: 15
+                },
+                {
+                    name: "Valparaíso",
+                    id: 16
+                }
+            ]
 		},
 		actions: {
 			loadSomeData: () => {

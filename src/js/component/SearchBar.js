@@ -4,9 +4,19 @@ import { Context } from "../store/appContext";
 
 /*armar barra de busqueda cuando existan datos, queda estructura básica para desarrollar*/
 
-const SearchBar = () => {
-    const { store, actions } = useContext(Context);
-    return 
-};
+class SearchBar extends Component {
+    constructor(props) {
+        super(props);
 
-export default SearchBar;
+        this.state = { term: "" };
+    }
+    render() {
+        return <input onChange={event => this.setState({ term: event.target.value})} />;
+    }
+
+    onImputChange(event) {
+        console.log(event.target.value);
+    }
+}
+
+export default SearchBar; 
