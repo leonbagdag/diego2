@@ -8,14 +8,22 @@ export const Home = () => (
 		<div div id="myCarousel" className="carousel slide" data-ride="carousel">
 			<Carousel>
 				<Carousel.Item>
-					<img className="max-width: 110%" src="https://picsum.photos/id/1/1280/500" alt="First slide" />
+					<img
+						className="justify-content-around w-100"
+						src="https://picsum.photos/id/1/1280/500"
+						alt="First slide"
+					/>
 					<Carousel.Caption>
 						<h3>DoItForMe</h3>
 						<p>Que es lo que hace DoItForMe</p>
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
-					<img className="max-width: 110%" src="https://picsum.photos/id/1/1280/500" alt="Third slide" />
+					<img
+						className="justify-content-around w-100"
+						src="https://picsum.photos/id/1/1280/500"
+						alt="Third slide"
+					/>
 
 					<Carousel.Caption>
 						<h3>DoItForMe</h3>
@@ -23,7 +31,11 @@ export const Home = () => (
 					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
-					<img className="max-width: 110%" src="https://picsum.photos/id/1/1280/500" alt="Third slide" />
+					<img
+						className="justify-content-around w-100"
+						src="https://picsum.photos/id/1/1280/500"
+						alt="Third slide"
+					/>
 
 					<Carousel.Caption>
 						<h3>DoItForMe</h3>
