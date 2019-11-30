@@ -8,3 +8,9 @@ export const SearchBar = () => {
     const { store, actions } = UseContext(Context);
 
 };
+
+return (
+    <div> 
+        
+    </div>
+)
