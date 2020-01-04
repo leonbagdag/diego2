@@ -1,48 +1,12 @@
 import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-import Carousel from "react-bootstrap/Carousel";
+import Slider from "../component/Slider";
 
 export const Home = () => (
 	<body>
-		<div div id="myCarousel" className="carousel slide" data-ride="carousel">
-			<Carousel>
-				<Carousel.Item>
-					<img
-						className="justify-content-around w-100"
-						src="https://picsum.photos/id/1/1280/500"
-						alt="First slide"
-					/>
-					<Carousel.Caption>
-						<h3>DoItForMe</h3>
-						<p>Que es lo que hace DoItForMe</p>
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item>
-					<img
-						className="justify-content-around w-100"
-						src="https://picsum.photos/id/1/1280/500"
-						alt="Third slide"
-					/>
-
-					<Carousel.Caption>
-						<h3>DoItForMe</h3>
-						<p>Que es los que hace DoItForMe</p>
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item>
-					<img
-						className="justify-content-around w-100"
-						src="https://picsum.photos/id/1/1280/500"
-						alt="Third slide"
-					/>
-
-					<Carousel.Caption>
-						<h3>DoItForMe</h3>
-						<p>Que es lo que hace DoItForMe</p>
-					</Carousel.Caption>
-				</Carousel.Item>
-			</Carousel>
+		<div>
+			<Slider />
 		</div>
 		{/*el cuadro de busqueda debe ser un componente, lo dejo como vista pero falta desarrollo pricipalmente datos que buscar*/}
 		<div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
