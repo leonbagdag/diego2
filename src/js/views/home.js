@@ -2,6 +2,7 @@ import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import Slider from "../component/Slider";
+import Card from "../component/card";
 
 export const Home = () => (
 	<body>
@@ -28,10 +29,19 @@ export const Home = () => (
 			<div className="product-device shadow-sm d-none d-md-block"></div>
 			<div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 		</div>
-		<div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-			<div className="col-md-5 p-lg-5 mx-auto my-5">
-				<h1 className="display-4 font-weight-normal">CARDS</h1>
+		<div className="container-fluid d-flex justify-content-center">
+			<div className="row">
+				<div className="col-md-4">
+					<Card />
+				</div>
+				<div className="col-md-4">
+					<Card />
+				</div>
+				<div className="col-md-4">
+					<Card />
+				</div>
 			</div>
+
 			<div className="product-device shadow-sm d-none d-md-block"></div>
 			<div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 		</div>
