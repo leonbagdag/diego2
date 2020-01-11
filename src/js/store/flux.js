@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					id: 6
 				}
 			],
-			user: { name: "Luis L.", logged: true },
+			user: { name: "Luis L.", logged: false },
 			region: [
 				{
 					name: "Aisén del G. Carlos Ibáñez del Campo",
