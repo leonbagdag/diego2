@@ -6,6 +6,7 @@ import { UserCard } from "../component/UserCard";*/
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/userProfile.scss";
 
 export const UserProfile = () => {
 	return (
@@ -18,7 +19,7 @@ export const UserProfile = () => {
 					/>
 					<div className="pt-4 mt-2">
 						<section className="mb-5 mb-md-0">
-							<h3 className="h6 font-weight-light text-secondary text-uppercase">Skills</h3>
+							<h3 className="h6 font-weight-light text-secondary text-uppercase">Mis Habilidades</h3>
 							<div className="skills pt-1 row">
 								<div className="col-4 mb-2">
 									<div className="chart" data-percent="95" data-scale-color="#fff">
@@ -57,10 +58,6 @@ export const UserProfile = () => {
 				<div className="col-md-8">
 					<div className="d-flex align-items-center">
 						<h2 className="font-weight-bold m-0">Diego Rojas T.</h2>
-						<address className="m-0 pt-2 pl-0 pl-md-4 font-weight-light text-secondary">
-							<i className="fa fa-map-marker"></i>
-							Garden City, NY
-						</address>
 					</div>
 					<p className="lead mt-4">
 						All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
