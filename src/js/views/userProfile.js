@@ -14,28 +14,9 @@ export const UserProfile = () => {
 				<div className="col-md-4 pr-md-5">
 					<img
 						className="w-100 rounded border"
-						src="https://cdn.bootstrapsnippet.net/assets/image/dummy-avatar.jpg"
+						src="https://www.researchgate.net/profile/Maria_Monreal2/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png"
 					/>
 					<div className="pt-4 mt-2">
-						<section className="mb-4 pb-1">
-							<h3 className="h6 font-weight-light text-secondary text-uppercase">Work Experiences</h3>
-							<div className="work-experience pt-2">
-								<div className="work mb-4">
-									<strong className="h5 d-block text-secondary font-weight-bold mb-1">
-										Prodesign Inc
-									</strong>
-									<strong className="h6 d-block text-warning mb-1">Front End Developer</strong>
-									<p className="text-secondary">Southern Street Floral Park, NY 11001</p>
-								</div>
-								<div className="work mb-4">
-									<strong className="h5 d-block text-secondary font-weight-bold mb-1">
-										Blue Tech
-									</strong>
-									<strong className="h6 d-block text-warning mb-1">Senior Programmer</strong>
-									<p className="text-secondary">George Avenue Mobile, AL 36608</p>
-								</div>
-							</div>
-						</section>
 						<section className="mb-5 mb-md-0">
 							<h3 className="h6 font-weight-light text-secondary text-uppercase">Skills</h3>
 							<div className="skills pt-1 row">
@@ -75,13 +56,12 @@ export const UserProfile = () => {
 				</div>
 				<div className="col-md-8">
 					<div className="d-flex align-items-center">
-						<h2 className="font-weight-bold m-0">Harry J. Hamilton</h2>
+						<h2 className="font-weight-bold m-0">Diego Rojas T.</h2>
 						<address className="m-0 pt-2 pl-0 pl-md-4 font-weight-light text-secondary">
 							<i className="fa fa-map-marker"></i>
 							Garden City, NY
 						</address>
 					</div>
-					<p className="h5 text-primary mt-2 d-block font-weight-light">Full-Stack Programmer</p>
 					<p className="lead mt-4">
 						All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
 						making this the first true generator on the Internet.
