@@ -1,0 +1,38 @@
+main {
+ 
+  position: relative;
+  z-index: 3;
+ overflow: hidden;
+}
+
+
+main section {
+  width: 70%;
+  padding: 90px 0;
+  margin: 50px auto 150px auto;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  align-items: center;
+
+}
+
+main section h2 {
+  font-size: 4.3rem;
+  color: #ddd;
+  text-transform: uppercase;
+ line-height: 4.2rem; 
+ padding-right: 10px;
+ border-right: 3px solid #ddd;
+}
+
+
+
+main section div {
+  position: relative;
+
+}
+
+main section div p {
+  padding-left: 10px;
+}
+

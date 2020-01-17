@@ -1,38 +1,35 @@
-import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Bootstrap from "react-bootstrap";
-import FormGroup from "react-bootstrap/FormGroup";
-import ControlLabel from "react-bootstrap";
-import FormControl from "react-bootstrap/FormControl";
+import React, { Component } from 'react';
+import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import SignInForm from './component/register';
 
-export default function Login(props) {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+import './App.css';
 
-	function validateForm() {
-		return email.length > 0 && password.length > 0;
-	}
+class App extends SignInForm {
+  render() {
+    return (
+      <Router basename="/react-auth-ui/">
+        <div className="App">
+          <div className="App__Aside"></div>
+          <div className="App__Form">
+            <div className="PageSwitcher">
+                <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+              </div>
 
-	function handleSubmit(event) {
-		event.preventDefault();
-	}
+              <div className="FormTitle">
+                  <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+              </div>
 
-	return (
-		<div className="Login">
-			<form onSubmit={handleSubmit}>
-				<FormGroup controlId="email" bsSize="large">
-					<ControlLabel>Email</ControlLabel>
-					<FormControl autoFocus type="email" value={email} onChange={e => setEmail(e.target.value)} />
-				</FormGroup>
-				<FormGroup controlId="password" bsSize="large">
-					<ControlLabel>Password</ControlLabel>
-					<FormControl value={password} onChange={e => setPassword(e.target.value)} type="password" />
-				</FormGroup>
-				<Button block bsSize="large" disabled={!validateForm()} type="submit">
-					Login
-				</Button>
-			</form>
-		</div>
-	);
+              <Route exact path="/" component={SignUpForm}>
+              </Route>
+              <Route path="/sign-in" component={SignInForm}>
+              </Route>
+          </div>
+
+        </div>
+      </Router>
+    );
+  }
 }
+
+export default App;

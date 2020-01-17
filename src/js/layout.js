@@ -9,7 +9,6 @@ import { ServiceForm } from "./views/serviceForm";
 import { UserProfile } from "./views/userProfile";
 import { ServiceView } from "./views/serviceView";
 import { HabAdmin } from "./views/habAdmin";
-import { Login } from "./views/loginform";
 
 import injectContext from "./store/appContext";
 
@@ -35,7 +34,6 @@ export const Layout = () => {
 						<Route path="/controlPanel/habilidades" component={HabAdmin} />
 						<Route path="/serviceForm" component={ServiceForm} />
 						<Route path="/perfil" component={UserProfile} />
-						<Route path="/login" exact component={Login} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					<Footer />
