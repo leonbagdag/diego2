@@ -20,12 +20,8 @@ const UserDropdown = () => {
 const SearchDropdown = () => {
 	return (
 		<div className="dropdown-menu dropdown-menu-left" aria-labelledby="search-nav">
-			<Link className="dropdown-item" to="/buscar/servicio">
+			<Link className="dropdown-item" to="/find/service-request">
 				Buscar Servicio...
-			</Link>
-			<div className="dropdown-divider"></div>
-			<Link className="dropdown-item" to="/buscar/proveedor">
-				Buscar Proveedor...
 			</Link>
 		</div>
 	);
@@ -97,7 +93,7 @@ const DesktopNavbar = props => {
 					</Link>
 				</li>
 				<li className="nav-item ml-3">
-					<Link to="/serviceForm" className="nav-link">
+					<Link to="/service-request/form" className="nav-link">
 						<i className="fas fa-clipboard"></i>
 						<span className="ml-2">Solicitar un Servicio</span>
 					</Link>
@@ -147,7 +143,7 @@ export const NavBar = () => {
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
-			<div className={store.user.logged ? "container d-sm-none navbar-nav" : "d-none"}>
+			<div className={store.logged ? "container d-sm-none navbar-nav" : "d-none"}>
 				{/*navbar pantalla sm si el usuario esta logged in<-*/}
 				<div className="nav-item mx-auto">
 					<Link to="/" className="navbar-brand">
@@ -156,7 +152,7 @@ export const NavBar = () => {
 				</div>
 				<MobileNavbar />
 			</div>
-			<div className={store.user.logged ? "container d-none d-sm-flex" : "container"}>
+			<div className={store.logged ? "container d-none d-sm-flex" : "container"}>
 				{/*Navbar para md en adelante con o sin log-in-> */}
 				<Link to="/" className="navbar-brand">
 					App-Logo
@@ -172,7 +168,7 @@ export const NavBar = () => {
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div className="collapse navbar-collapse" id="mainNavbar">
-					<DesktopNavbar isLogged={store.user.logged} userName={store.user.name} />
+					<DesktopNavbar isLogged={store.logged} userName={store.user.name} />
 				</div>
 			</div>
 		</nav>

@@ -28,11 +28,11 @@ export const Layout = () => {
 					<NavBar />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/buscar/servicio" component={BuscarServicio} />
-						<Route path="/buscar/:serviceID" component={ServiceView} />
+						<Route exact path="/service-request/form" component={ServiceForm} />
+						<Route path="/service-request/:serviceID" component={ServiceView} />
+						<Route path="/find/service-request" component={BuscarServicio} />
 						<Route exact path="/controlPanel" component={ControlPanel} />
 						<Route path="/controlPanel/habilidades" component={HabAdmin} />
-						<Route path="/serviceForm" component={ServiceForm} />
 						<Route path="/perfil" component={UserProfile} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
