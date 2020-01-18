@@ -17,7 +17,6 @@ export const BuscarServicio = () => {
 		 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 		 *
 		 **/
-		actions.get_session();
 		actions.find_services();
 	}, []);
 

@@ -12,19 +12,63 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			employer: {},
 			all_categories: {},
-			stats: {},
+			stats: {
+				top_categories: []
+			},
 			services: {},
 			access_token: "",
-			logged: false
+			logged: false,
+			app_data: {
+				all_categories: [],
+				all_regions: []
+			}
 		},
 		actions: {
+			get_app_data: () => {
+				fetch(API_URL + "/app-data", {
+					headers: { "Content-Type": "application/json" },
+					mode: "cors"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(data => {
+						setStore({ app_data: data.app_data });
+					})
+					.catch(error => {
+						//eslint-disable-next-line
+						console.log(error);
+					});
+			},
+
+			get_stats: () => {
+				fetch(API_URL + "/", {
+					headers: { "Content-Type": "application/json" },
+					mode: "cors"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(data => {
+						setStore({ stats: data.stats });
+					})
+					.catch(error => {
+						//eslint-disable-next-line
+						console.log(error);
+					});
+			},
+
 			get_session: () => {
-				const store = getStore();
 				const access_token = sessionStorage.getItem("access_token");
 				if (access_token === null) {
 					//eslint-disable-next-line
 					console.log("no access_token_in_session");
-					getActions().login(); //mientras no hay login endpoint
 				} else {
 					setStore({ access_token: access_token, logged: true });
 				}
@@ -52,9 +96,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						//eslint-disable-next-line
 						console.log(error);
 					});
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
 			},
 
 			find_services: () => {
@@ -78,8 +119,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						});
 						let provider = data.provider;
 						provider.categories = categories;
-						const services = data.services;
-						setStore({ provider: provider, services: services });
+
+						setStore({ provider: provider, services: data.services, user: data.user });
 					})
 					.catch(error => {
 						//eslint-disable-next-line
