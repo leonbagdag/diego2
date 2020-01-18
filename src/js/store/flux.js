@@ -29,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ access_token: access_token, logged: true });
 				}
 			},
+
 			login: () => {
 				const store = getStore();
 				fetch(API_URL + "/login", {
@@ -55,6 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
+
 			find_services: () => {
 				const store = getStore();
 				fetch(API_URL + "/find/service-request/?comuna=1", {
@@ -84,6 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 			},
+
 			toggle_cat_filter: cat => {
 				const store = getStore();
 				const categories = store.provider.categories.map(element => {
