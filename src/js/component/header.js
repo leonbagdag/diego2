@@ -5,8 +5,8 @@ const Header = props => {
 		<header>
 			<div className="head">
 				<h1>
-					We Design,
-					<br /> We Create
+					Do It
+					<br /> For Me
 				</h1>
 				<div>
 					<p>
@@ -16,7 +16,7 @@ const Header = props => {
 					</p>
 					<div>
 						<a className="contact" href="#">
-							Contact Us
+							Solicita un Servicio
 						</a>
 					</div>
 				</div>

@@ -28,22 +28,22 @@ export const UserProfile = () => {
 								</div>
 								<div className="col-4 mb-2">
 									<div className="chart" data-percent="85" data-scale-color="#fff">
-										<span>Ruby</span>
+										<span>Tramites Bancarios</span>
 									</div>
 								</div>
 								<div className="col-4 mb-2">
 									<div className="chart" data-percent="90" data-scale-color="#fff">
-										<span>Java</span>
+										<span>Tramites Legales</span>
 									</div>
 								</div>
 								<div className="col-4 mb-2">
 									<div className="chart" data-percent="82" data-scale-color="#fff">
-										<span>Python</span>
+										<span>Electricidad</span>
 									</div>
 								</div>
 								<div className="col-4 mb-2">
 									<div className="chart" data-percent="70" data-scale-color="#fff">
-										<span>C++</span>
+										<span>Cuidado de Mascotas</span>
 									</div>
 								</div>
 								<div className="col-4 mb-2">
@@ -79,20 +79,6 @@ export const UserProfile = () => {
 							</div>
 						</div>
 					</section>
-					<section className="d-flex mt-5">
-						<button className="btn btn-light bg-transparent mr-3 mb-3">
-							<i className="fa fa-comments"></i>
-							Private Message
-						</button>
-						<button className="btn btn-light bg-transparent mr-3 mb-3">
-							<i className="fa fa-warning"></i>
-							Report User
-						</button>
-						<button className="btn btn-primary mb-3">
-							<i className="fa fa-check"></i>
-							Hire Me
-						</button>
-					</section>
 					<section className="mt-4">
 						<ul className="nav nav-tabs" id="myTab" role="tablist">
 							<li className="nav-item">
@@ -104,7 +90,7 @@ export const UserProfile = () => {
 									role="tab"
 									aria-controls="home"
 									aria-selected="true">
-									About
+									Mis Datos
 								</a>
 							</li>
 							<li className="nav-item">
@@ -116,7 +102,7 @@ export const UserProfile = () => {
 									role="tab"
 									aria-controls="profile"
 									aria-selected="false">
-									Reviews
+									Mis Servicios
 								</a>
 							</li>
 							<li className="nav-item">
@@ -128,7 +114,7 @@ export const UserProfile = () => {
 									role="tab"
 									aria-controls="contact"
 									aria-selected="false">
-									Recent Projects
+									Mis Calificaciones
 								</a>
 							</li>
 						</ul>
@@ -168,7 +154,36 @@ export const UserProfile = () => {
 								</dl>
 							</div>
 							<div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-								...
+								<table className="table">
+									<thead>
+										<tr>
+											<th scope="col">Nombre del Servicio</th>
+											<th scope="col">Fecha</th>
+											<th scope="col">Solicitante</th>
+											<th scope="col">Descripción</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Mark</td>
+											<td>Otto</td>
+											<td>@mdo</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Jacob</td>
+											<td>Thornton</td>
+											<td>@fat</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td>Larry</td>
+											<td>the Bird</td>
+											<td>@twitter</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 							<div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 								...
