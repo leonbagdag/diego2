@@ -9,6 +9,7 @@ import { ServiceForm } from "./views/serviceForm";
 import { UserProfile } from "./views/userProfile";
 import { ServiceView } from "./views/serviceView";
 import { HabAdmin } from "./views/habAdmin";
+import { Login } from "./views/login";
 
 import injectContext from "./store/appContext";
 
@@ -28,6 +29,7 @@ export const Layout = () => {
 					<NavBar />
 					<Switch>
 						<Route exact path="/" component={Home} />
+						<Route exact path="/login" component={Login} />
 						<Route exact path="/service-request/form" component={ServiceForm} />
 						<Route path="/service-request/:serviceID" component={ServiceView} />
 						<Route path="/find/service-request" component={BuscarServicio} />

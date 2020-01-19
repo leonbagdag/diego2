@@ -129,7 +129,7 @@ const DesktopNavbar = props => {
 					</Link>
 				</li>
 				<li className="nav-item">
-					<Link to="/serviceForm" className="nav-link">
+					<Link to="/login" className="nav-link">
 						<span>Conectarme</span>
 					</Link>
 				</li>

@@ -75,13 +75,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			login: () => {
+			login: credentials => {
 				const store = getStore();
 				fetch(API_URL + "/login", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					mode: "cors",
-					body: JSON.stringify({ email: "luis.lucena89@gmail.com", password: "luis1953" })
+					body: JSON.stringify({ email: credentials.email, password: credentials.password })
 				})
 					.then(response => {
 						if (!response.ok) {
