@@ -4,19 +4,12 @@ import { Context } from "../store/appContext";
 
 import { CategoryFilter } from "../component/categoryFilter";
 import { LocationFilter } from "../component/locationFilter";
+import { Service_card } from "../component/service_card";
 
 export const BuscarServicio = () => {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
-		/**
-		 * EDIT THIS!
-		 * This function is the equivalent to "window.onLoad", it only run once on the entire application lifetime
-		 * you should do your ajax requests or fetch api requests here
-		 *
-		 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
-		 *
-		 **/
 		actions.find_services();
 	}, []);
 
@@ -78,9 +71,7 @@ export const BuscarServicio = () => {
 					</div>
 				</div>
 				<div className="col-lg-9">
-					<div className="card card-body">
-						<h1>services</h1>
-					</div>
+					<Service_card />
 				</div>
 			</div>
 		</div>

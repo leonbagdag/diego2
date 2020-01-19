@@ -15,13 +15,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			stats: {
 				top_categories: []
 			},
-			services: {},
+			services: [],
 			access_token: "",
 			logged: false,
 			app_data: {
 				all_categories: [],
 				all_regions: []
-			}
+			},
+			comunas: []
 		},
 		actions: {
 			get_app_data: () => {
