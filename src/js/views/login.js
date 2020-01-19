@@ -53,7 +53,7 @@ export const Login = () => {
 									onChange={handleChange}
 								/>
 							</div>
-							<button type="submit" className="btn btn-primary mx-auto">
+							<button type="submit" className="btn btn-primary mx-auto" onClick={handleSubmit}>
 								Submit
 							</button>
 						</form>

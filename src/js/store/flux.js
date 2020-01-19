@@ -70,6 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (access_token === null) {
 					//eslint-disable-next-line
 					console.log("no access_token_in_session");
+					setStore({ access_token: "", logged: false });
 				} else {
 					setStore({ access_token: access_token, logged: true });
 				}

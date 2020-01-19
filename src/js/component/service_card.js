@@ -7,32 +7,27 @@ export const Service_card = () => {
 
 	return (
 		<div className="container-fluid">
-			{store.services.map(item => {
-				return (
-					<div key={item.id.toString()} className="card">
-						<div className="row no-gutters">
-							<div className="col-md-3">
-								<img src="https://picsum.photos/100" alt="servie_img_1" />
-							</div>
-							<div className="col-md-6">
-								<div className="card-body">
-									<h5 className="card-title">{item.status}</h5>
-									<p className="card-text">{item.description}</p>
-									<p className="card-text">
-										<small className="text-muted">{item.category.name}</small>
-									</p>
+			<div className="row">
+				{store.services.map(item => {
+					return (
+						<div key={item.id.toString()} className="col-lg-3 col-sm-6 my-2">
+							<Link to={`/service-request/${item.id}`}>
+								<div className="card h-100">
+									<div className="card-body">
+										<h4 className="card-title">{item.name}</h4>
+										<p className="card-text">{item.description}</p>
+									</div>
+									<div className="card-footer">
+										<p>
+											{item.category.name} <i className={item.category.logo}></i>
+										</p>
+									</div>
 								</div>
-							</div>
-							<div className="col-md-3">
-								<div className="card-body">
-									<h5 className="card-title">Card title</h5>
-									<p className="card-text">{item.date_created}</p>
-								</div>
-							</div>
+							</Link>
 						</div>
-					</div>
-				);
-			})}
+					);
+				})}
+			</div>
 		</div>
 	);
 };
