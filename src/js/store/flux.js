@@ -22,7 +22,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				all_categories: [],
 				all_regions: []
 			},
-			comunas: []
+			comunas: [],
+			offer_made: false
 		},
 		actions: {
 			get_app_data: () => {
@@ -122,7 +123,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let provider = data.provider;
 						provider.categories = categories;
 
-						setStore({ provider: provider, services: data.services, user: data.user });
+						setStore({ provider: provider, services: data.services, user: data.user, offer_made: false });
+					})
+					.catch(error => {
+						//eslint-disable-next-line
+						console.log(error);
+					});
+			},
+
+			create_offer: service => {
+				const store = getStore();
+				fetch(`${API_URL}/service-request/${service.id}/offer`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.access_token
+					},
+					mode: "cors",
+					body: JSON.stringify({ create: "offer" })
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.status);
+						}
+						return response.json();
+					})
+					.then(data => {
+						//eslint-disable-next-line
+						console.log(data.msg);
+						setStore({ offer_made: true });
 					})
 					.catch(error => {
 						//eslint-disable-next-line
