@@ -7,10 +7,10 @@ const Cuerpo = props => {
 				<h2>Sobre Nosotros</h2>
 				<div>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel gravida nisi. Vestibulum ac
-						consequat lorem. In in mi massa. Donec ut tellus sit amet sem ornare fermentum at et nunc.
-						Pellentesque ac elementum metus. Praesent non venenatis lacus. In sagittis urna in nulla
-						sagittis mattis.
+						La platadorma fue creada por Luis Lucena y Diego Rojas. Este proyecto surgio como el trabajo
+						final del curso de Desarrollador Full-Stack de 4Geeks Academy. Nuestro interes fue realizar
+						nuestras primeras incursiones como desarrolladores, aplicando las tecnologías que hoy el mercado
+						demanda.
 					</p>
 				</div>
 			</section>
@@ -18,33 +18,42 @@ const Cuerpo = props => {
 				<div className="services">
 					<div className="service-one">
 						<p className="service-icon">
-							<i className="far fa-calendar-alt"></i>
+							<i className="fas fa-money-check-alt"></i>
 						</p>
-						<p className="service-title">Servicio 1</p>
-						<p>
-							Mauris vitae turpis ut sem blandit consequat et at ligula. Suspendisse quam lectus,
-							tristique dapibus sapien et, tempus suscipit nisl.
+						<p className="service-title">Trámines Bancarios</p>
+						<p className="text-justify">
+							¿No quieres ir al banco? ¿No quieres hacer largas filas? No importa! que alguien lo haga por
+							ti{" "}
 						</p>
+						<a className="contact" href="/serviceForm">
+							DoItForMe!
+						</a>
 					</div>
 					<div className="service-two">
 						<p className="service-icon">
-							<i className="fas fa-crop"></i>
+							<i className="fas fa-balance-scale"></i>
 						</p>
-						<p className="service-title">Servicio 2</p>
-						<p>
-							Nulla eu metus faucibus, vehicula tortor quis, venenatis odio. Nullam purus mauris, feugiat
-							in odio vitae, posuere volutpat libero. Sed et convallis libero.
+						<p className="service-title">Trámites Legales</p>
+						<p className="text-justify">
+							¿Filas en las notarias? Ni hablar, mejor que alguien más lo haga por ti.
 						</p>
+						<a className="contact" href="/serviceForm">
+							DoItForMe!
+						</a>
 					</div>
 					<div className="service-three">
 						<p className="service-icon">
-							<i className="fas fa-code"></i>
+							<i className="fa fa-bolt"></i>
 						</p>
-						<p className="service-title">Servicio 3</p>
-						<p>
-							Ut ornare vitae enim a rhoncus. Nullam aliquet tristique scelerisque. Sed volutpat dictum
-							risus ac laoreet. Suspendisse id lorem in enim sollicitudin varius.
+						<p className="service-title">Electricidad</p>
+						<p className="text-justify">
+							{" "}
+							Desde cambiar una ampolleta a conecciones complejas, no pierda tiempo, que alguie los haga
+							por ti
 						</p>
+						<a className="contact" href="/serviceForm">
+							DoItForMe!
+						</a>
 					</div>
 				</div>
 			</div>

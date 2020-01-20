@@ -1,7 +1,10 @@
-import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
+import React from "react";
+import ServiceCards from "../component/ServiceCards";
 
 export const ServiceForm = () => {
-	return <h1>Hola Mundo, aquí se renderizará el formulario de solicitud de servicios</h1>;
+	return (
+		<div className="App">
+			<ServiceCards />
+		</div>
+	);
 };

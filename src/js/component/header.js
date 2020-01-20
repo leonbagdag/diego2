@@ -9,10 +9,11 @@ const Header = props => {
 					<br /> For Me
 				</h1>
 				<div>
-					<p>
-						Integer posuere leo non erat ornare dictum id vitae magna. Proin consectetur iaculis nisi, ut
-						convallis tortor tempor congue. Curabitur sit amet tempus felis. Duis tellus eros, pellentesque
-						at rhoncus eu, maximus ut diam.
+					<p className="text-justify">
+						¿Para que hacer aquellas tareas que no quieres hacer si siempre habrá alguien que las quiera
+						hacer por ti? La respuesta es facil, DoItForMe! A través de nuestra plataforma podrás delegar
+						aquellas tareas que no quieres hacer. Nos basamos en el supuesto que siempe alguien tendrá las
+						habilidades que tu necesitas, un trato justo, tu ganas tiempo y el resto, DINERO.
 					</p>
 					<div>
 						<a className="contact" href="#">

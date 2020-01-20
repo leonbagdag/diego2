@@ -70,6 +70,8 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.0",
+    "firebase": "^7.7.0",
+    "formik": "^2.1.2",
     "jquery": "^3.4.1",
     "mdbreact": "^4.24.0",
     "popper.js": "^1.16.0",
@@ -77,6 +79,7 @@
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.11.0",
+    "react-form": "^4.0.1",
     "react-polyfills": "0.0.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"

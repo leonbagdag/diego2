@@ -35,6 +35,7 @@ export const Layout = () => {
 						<Route exact path="/controlPanel" component={ControlPanel} />
 						<Route exact path="/loginform" component={Loginform} />
 						<Route exact path="/register" component={Register} />
+						<route exact path="serviceForm" component={ServiceForm} />
 						<Route path="/controlPanel/habilidades" component={HabAdmin} />
 						<Route path="/serviceForm" component={ServiceForm} />
 						<Route path="/perfil" component={UserProfile} />
