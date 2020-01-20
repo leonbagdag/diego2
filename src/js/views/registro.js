@@ -2,11 +2,13 @@ import React, { useEffect, useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Login = () => {
+export const Registro = () => {
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
 		email: "",
-		password: ""
+		password: "",
+		re_password: "",
+		verified_pass: true
 	});
 
 	const handleChange = event => {
@@ -16,7 +18,13 @@ export const Login = () => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		actions.login(state);
+		if (state.password !== state.re_password) {
+			const new_state = Object.assign(state, { verified_pass: false });
+			setState({ ...new_state });
+			console.log(state);
+		} else {
+			console.log("yes");
+		}
 	};
 
 	if (store.logged) {
@@ -45,13 +53,24 @@ export const Login = () => {
 									type="password"
 									className="form-control"
 									id="password"
-									placeholder="Password"
+									placeholder="Contraseña"
 									value={state.password}
 									onChange={handleChange}
 								/>
 							</div>
+							<div className="form-group mx-auto">
+								<label htmlFor="userPassword">Password</label>
+								<input
+									type="password"
+									className="form-control"
+									id="re_password"
+									placeholder="Repite tu contraseña"
+									value={state.re_password}
+									onChange={handleChange}
+								/>
+							</div>
 							<button type="submit" className="btn btn-primary mx-auto" onClick={handleSubmit}>
-								Submit
+								Registrarme
 							</button>
 						</form>
 					</div>
