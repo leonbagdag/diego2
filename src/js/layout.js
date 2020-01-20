@@ -9,6 +9,8 @@ import { ServiceForm } from "./views/serviceForm";
 import { UserProfile } from "./views/userProfile";
 import { ServiceView } from "./views/serviceView";
 import { HabAdmin } from "./views/habAdmin";
+import { Loginform } from "./views/loginform";
+import { Register } from "./views/register";
 
 import injectContext from "./store/appContext";
 
@@ -31,6 +33,8 @@ export const Layout = () => {
 						<Route exact path="/buscar/servicio" component={BuscarServicio} />
 						<Route path="/buscar/:serviceID" component={ServiceView} />
 						<Route exact path="/controlPanel" component={ControlPanel} />
+						<Route exact path="/loginform" component={Loginform} />
+						<Route exact path="/register" component={Register} />
 						<Route path="/controlPanel/habilidades" component={HabAdmin} />
 						<Route path="/serviceForm" component={ServiceForm} />
 						<Route path="/perfil" component={UserProfile} />

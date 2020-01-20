@@ -128,12 +128,12 @@ const DesktopNavbar = props => {
 		return (
 			<ul className="navbar-nav ml-auto align-items-center">
 				<li className="nav-item">
-					<Link to="/controlPanel" className="nav-link">
+					<Link to="/register" className="nav-link">
 						<span>Registrarme</span>
 					</Link>
 				</li>
 				<li className="nav-item">
-					<Link to="/login" className="nav-link">
+					<Link to="/loginform" className="nav-link">
 						<span>Conectarme</span>
 					</Link>
 				</li>
