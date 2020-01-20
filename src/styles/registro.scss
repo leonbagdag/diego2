@@ -1,3 +1,20 @@
+.Register {
+ 
+  position: relative;
+  z-index: 3;
+ overflow: hidden;
+}
+
+.container { 
+  background-color: #fff;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 10px 54px -11px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 54px -11px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 54px -11px rgba(0,0,0,0.75);
+}
+
 #register, #login {
   width: 300px;
   border: 1px solid #d6d7da;

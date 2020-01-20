@@ -4,8 +4,10 @@ import "../../styles/registro.scss";
 
 export const Register = () => {
 	return (
-		<div className="App">
-			<RegisterForm />
+		<div className="container">
+			<div className="App">
+				<RegisterForm />
+			</div>
 		</div>
 	);
 };
