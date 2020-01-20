@@ -7,6 +7,7 @@ import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/userProfile.scss";
+import { CategoryFilter } from "../component/categoryFilter";
 
 export const UserProfile = () => {
 	return (

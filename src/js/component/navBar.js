@@ -91,12 +91,6 @@ const DesktopNavbar = props => {
 					<SearchDropdown />
 				</li>
 				<li className="nav-item ml-3">
-					<Link to="/controlPanel" className="nav-link">
-						<i className="fas fa-tasks"></i>
-						<span className="ml-2">Mis Servicios</span>
-					</Link>
-				</li>
-				<li className="nav-item ml-3">
 					<Link to="/serviceForm" className="nav-link">
 						<i className="fas fa-clipboard"></i>
 						<span className="ml-2">Solicitar un Servicio</span>

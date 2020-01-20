@@ -137,7 +137,7 @@ class ServiceCards extends Component {
 						</select>
 					</div>
 					<div>
-						<p>We will answer as soon as possible</p>
+						<p></p>
 						<input type="submit" name="submit" value="Send" onClick={this.submitForm} />
 					</div>
 				</form>

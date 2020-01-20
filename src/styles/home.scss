@@ -6,9 +6,7 @@ body {
   color: #111;
 
 }
-body * {
-  transition: all 0.300s ease-in-out;
-}
+
 
 .container { 
   background-color: #fff;
@@ -556,15 +554,5 @@ footer ul li a {
     border-radius: 5px;
   
   }
-  footer {
-    padding: 20px 0;
-    text-align: center;
-    grid-template-columns:1fr;
-  
-  }
-  footer ul li a {
- font-size: 1.8rem;
   }
   
-  
-}

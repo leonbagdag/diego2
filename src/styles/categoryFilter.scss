@@ -1,3 +1,10 @@
+categoryFilter {
+ 
+  position: relative;
+  z-index: 3;
+ overflow: hidden;
+}
+
 .hPill {
     height: 60px;
     width: 60px;
@@ -28,4 +35,9 @@
     box-shadow: 0 4px 8px 0px grey;
     padding-right: 5px;
     padding-left: 5px;
+}
+
+categoryFilter section div {
+  position: relative;
+
 }
