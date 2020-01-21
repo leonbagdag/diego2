@@ -23,7 +23,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				all_regions: []
 			},
 			comunas: [],
-			offer_made: false
+			offer_made: false,
+			api_error_msg: ""
 		},
 		actions: {
 			get_app_data: () => {
@@ -86,14 +87,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({ email: credentials.email, password: credentials.password })
 				})
 					.then(response => {
-						if (!response.ok) {
+						if (!response.ok && !response.status === "400" && !response.status === "404") {
 							throw Error(response.status);
 						}
 						return response.json();
 					})
 					.then(data => {
-						setStore({ user: data.user, access_token: data.access_token, logged: data.logged });
-						sessionStorage.setItem("access_token", data.access_token);
+						console.log(data);
+						// setStore({ user: data.user, access_token: data.access_token, logged: data.logged });
+						// sessionStorage.setItem("access_token", data.access_token);
 					})
 					.catch(error => {
 						//eslint-disable-next-line

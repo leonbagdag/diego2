@@ -4,10 +4,16 @@ import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
-	const [state, setState] = useState({
-		email: "",
-		password: ""
-	});
+	const [state, setState] = useState([
+		{
+			email: "",
+			password: ""
+		}
+	]);
+
+	useEffect(() => {
+		//component did mount
+	}, []);
 
 	const handleChange = event => {
 		const new_state = Object.assign(state, { [event.target.id]: event.target.value });
