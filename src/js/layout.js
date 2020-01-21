@@ -5,7 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { BuscarServicio } from "./views/buscarServicio";
 import { ControlPanel } from "./views/controlPanel";
-import { ServiceForm } from "./views/serviceForm";
+import { ProfileForm } from "./views/editeProfile";
 import { UserProfile } from "./views/userProfile";
 import { ServiceView } from "./views/serviceView";
 import { HabAdmin } from "./views/habAdmin";
@@ -35,9 +35,8 @@ export const Layout = () => {
 						<Route exact path="/controlPanel" component={ControlPanel} />
 						<Route exact path="/loginform" component={Loginform} />
 						<Route exact path="/register" component={Register} />
-						<route exact path="serviceForm" component={ServiceForm} />
+						<route path="perfil/editeProfile" component={ProfileForm} />
 						<Route path="/controlPanel/habilidades" component={HabAdmin} />
-						<Route path="/serviceForm" component={ServiceForm} />
 						<Route path="/perfil" component={UserProfile} />
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
