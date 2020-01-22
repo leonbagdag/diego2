@@ -63,6 +63,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ app_data: data.app_data });
 					})
 					.catch(error => {
+						if (error.name === "TypeError") {
+							getActions().show_toast_error("Error de Conexión... Intenta más tarde.");
+						}
 						//eslint-disable-next-line
 						console.log(error);
 					});
