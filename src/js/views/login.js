@@ -15,14 +15,9 @@ export const Login = () => {
 	]);
 
 	useEffect(() => {
-		$("#error_toast").toast("show");
-	}, []);
-
-	useEffect(() => {
 		//component will unmount
 		return () => {
-			//eslint-disable-next-line
-			actions.clean_error();
+			actions.clean_error(); //limpia mensajes de error desde API en el store.
 		};
 	}, []);
 
@@ -84,9 +79,9 @@ export const Login = () => {
 						<Link to="/registro">Registrate aquí</Link>
 					</div>
 				</div>
-				<div className="toast" id="error_toast">
+				<div className="toast" id="error_toast" data-delay="2000">
 					<div className="toast-header">Toast Header</div>
-					<div className="toast-body">Some text inside the toast body</div>
+					<div className="toast-body">{store.toast_error}</div>
 				</div>
 			</div>
 		);

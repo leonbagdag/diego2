@@ -27,7 +27,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			api_error_msg: {
 				new_msg: false,
 				msg: ""
-			}
+			},
+			toast_error: ""
 		},
 		actions: {
 			clean_services: () => {
@@ -116,8 +117,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					})
 					.catch(error => {
-						//eslint-disable-next-line
-						console.log(error);
+						if (error.name === "TypeError") {
+							setStore({ toast_error: "Error de conexión... Intenta más tarde." });
+						}
+						$("#error_toast").toast("show");
 					});
 			},
 

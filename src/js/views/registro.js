@@ -21,8 +21,10 @@ export const Registro = () => {
 		if (state.password !== state.re_password) {
 			const new_state = Object.assign(state, { verified_pass: false });
 			setState({ ...new_state });
+			//eslint-disable-next-line
 			console.log(state);
 		} else {
+			//eslint-disable-next-line
 			console.log("yes");
 		}
 	};
