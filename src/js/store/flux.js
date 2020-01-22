@@ -31,6 +31,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			toast_error: ""
 		},
 		actions: {
+			show_toast_error: msg => {
+				setStore({ toast_error: msg });
+				$("#error_toast").toast("show");
+			},
+
 			clean_services: () => {
 				setStore({ services: [] });
 				//eslint-disable-next-line
@@ -118,9 +123,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							setStore({ toast_error: "Error de conexión... Intenta más tarde." });
+							getActions().show_toast_error("Error de Conexión... Intenta más tarde.");
 						}
-						$("#error_toast").toast("show");
+						//eslint-disable-next-line
+						console.log(error);
 					});
 			},
 

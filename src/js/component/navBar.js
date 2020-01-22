@@ -142,35 +142,41 @@ export const NavBar = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
-			<div className={store.logged ? "container d-sm-none navbar-nav" : "d-none"}>
-				{/*navbar pantalla sm si el usuario esta logged in<-*/}
-				<div className="nav-item mx-auto">
+		<div className="container-fluid">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
+				<div className={store.logged ? "container d-sm-none navbar-nav" : "d-none"}>
+					{/*navbar pantalla sm si el usuario esta logged in<-*/}
+					<div className="nav-item mx-auto">
+						<Link to="/" className="navbar-brand">
+							App-Logo
+						</Link>
+					</div>
+					<MobileNavbar />
+				</div>
+				<div className={store.logged ? "container d-none d-sm-flex" : "container"}>
+					{/*Navbar para md en adelante con o sin log-in-> */}
 					<Link to="/" className="navbar-brand">
 						App-Logo
 					</Link>
+					<button
+						className="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#mainNavbar"
+						aria-controls="mainNavbar"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span className="navbar-toggler-icon"></span>
+					</button>
+					<div className="collapse navbar-collapse" id="mainNavbar">
+						<DesktopNavbar isLogged={store.logged} userName={store.user.name} />
+					</div>
 				</div>
-				<MobileNavbar />
+			</nav>
+			<div className="toast" id="error_toast" data-delay="2000">
+				<div className="toast-header">Toast Header</div>
+				<div className="toast-body">{store.toast_error}</div>
 			</div>
-			<div className={store.logged ? "container d-none d-sm-flex" : "container"}>
-				{/*Navbar para md en adelante con o sin log-in-> */}
-				<Link to="/" className="navbar-brand">
-					App-Logo
-				</Link>
-				<button
-					className="navbar-toggler"
-					type="button"
-					data-toggle="collapse"
-					data-target="#mainNavbar"
-					aria-controls="mainNavbar"
-					aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-				</button>
-				<div className="collapse navbar-collapse" id="mainNavbar">
-					<DesktopNavbar isLogged={store.logged} userName={store.user.name} />
-				</div>
-			</div>
-		</nav>
+		</div>
 	);
 };
