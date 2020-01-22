@@ -10,11 +10,18 @@ export const ServiceView = props => {
 		if (item.id == ID) {
 			return item;
 		}
-	})[0]; //devuelve un objeto y no un array de la funcion map.
+	})[0]; //devuelve un objeto y no un array de la funcion filter.
 
 	const handle_click = () => {
 		actions.create_offer(service);
 	};
+
+	useEffect(() => {
+		// component will unmount
+		return () => {
+			actions.clean_services();
+		};
+	}, []);
 
 	if (!store.logged) {
 		return <Redirect to="/login" />;

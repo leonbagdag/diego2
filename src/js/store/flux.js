@@ -30,6 +30,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
+			clean_services: () => {
+				setStore({ services: [] });
+				//eslint-disable-next-line
+				console.log("services clean");
+			},
+
 			clean_error: () => {
 				setStore({ api_error_msg: { new_msg: false, msg: "" } }); // limpia variable de mensajes de error
 				//eslint-disable-next-line

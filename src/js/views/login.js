@@ -15,6 +15,10 @@ export const Login = () => {
 	]);
 
 	useEffect(() => {
+		$("#error_toast").toast("show");
+	}, []);
+
+	useEffect(() => {
 		//component will unmount
 		return () => {
 			//eslint-disable-next-line
@@ -79,6 +83,10 @@ export const Login = () => {
 						<p> ¿No tienes una cuenta? </p>
 						<Link to="/registro">Registrate aquí</Link>
 					</div>
+				</div>
+				<div className="toast" id="error_toast">
+					<div className="toast-header">Toast Header</div>
+					<div className="toast-body">Some text inside the toast body</div>
 				</div>
 			</div>
 		);
