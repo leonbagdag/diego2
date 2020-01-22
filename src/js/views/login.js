@@ -4,15 +4,22 @@ import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
+
 	const [state, setState] = useState([
 		{
 			email: "",
-			password: ""
+			password: "",
+			email_verified: false,
+			passw_verified: false
 		}
 	]);
 
 	useEffect(() => {
-		//component did mount
+		//component will unmount
+		return () => {
+			//eslint-disable-next-line
+			actions.clean_error();
+		};
 	}, []);
 
 	const handleChange = event => {
@@ -30,7 +37,14 @@ export const Login = () => {
 	} else {
 		return (
 			<div className="container">
-				<div className="card mx-auto mt-5 w-50">
+				<div className="card mx-auto mt-5" style={{ maxWidth: "500px" }}>
+					<div
+						className={
+							store.api_error_msg.new_msg ? "alert alert-danger d-flex align-items-center" : "d-none"
+						}
+						role="alert">
+						<p className="my-0">{store.api_error_msg.msg}</p>
+					</div>
 					<div className="card-body">
 						<form id="loginForm" onSubmit={handleSubmit}>
 							<div className="form-group mx-auto">
@@ -60,6 +74,10 @@ export const Login = () => {
 								Submit
 							</button>
 						</form>
+					</div>
+					<div className="card-footer">
+						<p> ¿No tienes una cuenta? </p>
+						<Link to="/registro">Registrate aquí</Link>
 					</div>
 				</div>
 			</div>

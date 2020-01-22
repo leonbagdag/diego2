@@ -24,9 +24,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			comunas: [],
 			offer_made: false,
-			api_error_msg: ""
+			api_error_msg: {
+				new_msg: false,
+				msg: ""
+			}
 		},
 		actions: {
+			clean_error: () => {
+				setStore({ api_error_msg: { new_msg: false, msg: "" } }); // limpia variable de mensajes de error
+				//eslint-disable-next-line
+				console.log("error msg clean");
+			},
+
 			get_app_data: () => {
 				fetch(API_URL + "/app-data", {
 					headers: { "Content-Type": "application/json" },
@@ -88,14 +97,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => {
 						if (!response.ok && !response.status === "400" && !response.status === "404") {
-							throw Error(response.status);
+							throw Error(response.statusText);
 						}
 						return response.json();
 					})
 					.then(data => {
-						console.log(data);
-						// setStore({ user: data.user, access_token: data.access_token, logged: data.logged });
-						// sessionStorage.setItem("access_token", data.access_token);
+						if ("Error" in data) {
+							setStore({ api_error_msg: { new_msg: true, msg: data.Error } });
+						} else {
+							setStore({ user: data.user, access_token: data.access_token, logged: data.logged });
+							sessionStorage.setItem("access_token", data.access_token);
+						}
 					})
 					.catch(error => {
 						//eslint-disable-next-line
