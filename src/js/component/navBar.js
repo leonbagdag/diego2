@@ -184,7 +184,6 @@ export const NavBar = () => {
 					<div className="toast-header">
 						<span className="bg-danger mx-2 rounded-lg" style={{ width: "20px", height: "20px" }}></span>
 						<strong className="mr-auto">Error</strong>
-						<small>ahora..</small>
 						<button type="button" className="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
