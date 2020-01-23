@@ -125,12 +125,14 @@ const DesktopNavbar = props => {
 			<ul className="navbar-nav ml-auto align-items-center">
 				<li className="nav-item">
 					<Link to="/registro" className="nav-link">
-						<span>Registrarme</span>
+						<span>Registro</span>
 					</Link>
 				</li>
 				<li className="nav-item">
 					<Link to="/login" className="nav-link">
-						<span>Conectarme</span>
+						<span type="button" className="btn btn-outline-primary">
+							Iniciar Sesión
+						</span>
 					</Link>
 				</li>
 			</ul>
@@ -142,7 +144,7 @@ export const NavBar = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container-fluid">
+		<div className="container-fluid fixed-top px-0">
 			<nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
 				<div className={store.logged ? "container d-sm-none navbar-nav" : "d-none"}>
 					{/*navbar pantalla sm si el usuario esta logged in<-*/}
@@ -173,9 +175,22 @@ export const NavBar = () => {
 					</div>
 				</div>
 			</nav>
-			<div className="toast" id="error_toast" data-delay="2000">
-				<div className="toast-header">Toast Header</div>
-				<div className="toast-body">{store.toast_error}</div>
+			<div className="container" aria-live="polite" aria-atomic="true" style={{ position: "relative" }}>
+				<div
+					className="toast"
+					id="error_toast"
+					style={{ position: "absolute", top: "10px", right: "0px" }}
+					data-delay="2000">
+					<div className="toast-header">
+						<span className="bg-danger mx-2 rounded-lg" style={{ width: "20px", height: "20px" }}></span>
+						<strong className="mr-auto">Error</strong>
+						<small>ahora..</small>
+						<button type="button" className="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div className="toast-body">{store.toast_error}</div>
+				</div>
 			</div>
 		</div>
 	);
