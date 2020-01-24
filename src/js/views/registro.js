@@ -11,6 +11,11 @@ export const Registro = () => {
 		verified_pass: true
 	});
 
+	const validate_input = () => {
+		//eslint-disable-next-line
+		console.log("hello");
+	};
+
 	const handleChange = event => {
 		const new_state = Object.assign(state, { [event.target.id]: event.target.value });
 		setState({ ...new_state });
@@ -34,9 +39,9 @@ export const Registro = () => {
 	} else {
 		return (
 			<div className="container">
-				<div className="card mx-auto mt-5 w-50">
+				<div className="card mx-auto mt-5" style={{ maxWidth: "500px" }}>
 					<div className="card-body">
-						<form id="loginForm" onSubmit={handleSubmit}>
+						<form id="loginForm" onSubmit={validate_input}>
 							<div className="form-group mx-auto">
 								<label htmlFor="userEmail">Email</label>
 								<input
@@ -71,7 +76,7 @@ export const Registro = () => {
 									onChange={handleChange}
 								/>
 							</div>
-							<button type="submit" className="btn btn-primary mx-auto" onClick={handleSubmit}>
+							<button type="button" className="btn btn-primary mx-auto" onClick={validate_input}>
 								Registrarme
 							</button>
 						</form>

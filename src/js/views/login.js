@@ -47,24 +47,24 @@ export const Login = () => {
 					<div className="card-body">
 						<form id="loginForm" onSubmit={handleSubmit}>
 							<div className="form-group mx-auto">
-								<label htmlFor="userEmail">Email</label>
+								<label htmlFor="email">Email</label>
 								<input
 									type="email"
 									className="form-control"
 									id="email"
 									aria-describedby="emailHelp"
-									placeholder="Enter email"
+									placeholder="Ingresa email"
 									value={state.email}
 									onChange={handleChange}
 								/>
 							</div>
 							<div className="form-group mx-auto">
-								<label htmlFor="userPassword">Password</label>
+								<label htmlFor="password">Contraseña</label>
 								<input
 									type="password"
 									className="form-control"
 									id="password"
-									placeholder="Password"
+									placeholder="Ingresa tu contraseña"
 									value={state.password}
 									onChange={handleChange}
 								/>
@@ -79,10 +79,6 @@ export const Login = () => {
 						<Link to="/registro">Registrate aquí</Link>
 					</div>
 				</div>
-				{/* <div className="toast" id="error_toast" data-delay="2000">
-					<div className="toast-header">Toast Header</div>
-					<div className="toast-body">{store.toast_error}</div>
-				</div> */}
 			</div>
 		);
 	}

@@ -28,12 +28,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				new_msg: false,
 				msg: ""
 			},
-			toast_error: ""
+			toast_news: {}
 		},
 		actions: {
-			show_toast_error: msg => {
-				setStore({ toast_error: msg });
-				$("#error_toast").toast("show");
+			connect_error: () => {
+				setStore({
+					toast_news: {
+						msg: "Error de Conexión... Intenta más tarde.",
+						bg: "bg-danger",
+						status: "Error"
+					}
+				});
+				$("#toast_news").toast("show");
 			},
 
 			clean_services: () => {
@@ -55,7 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => {
 						if (!response.ok) {
-							throw Error(response.status);
+							throw Error(response.statusText);
 						}
 						return response.json();
 					})
@@ -64,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().show_toast_error("Error de Conexión... Intenta más tarde.");
+							getActions().connect_error();
 						}
 						//eslint-disable-next-line
 						console.log(error);
@@ -78,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => {
 						if (!response.ok) {
-							throw Error(response.status);
+							throw Error(response.statusText);
 						}
 						return response.json();
 					})
@@ -86,6 +92,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ stats: data.stats });
 					})
 					.catch(error => {
+						if (error.name === "TypeError") {
+							getActions().connect_error();
+						}
 						//eslint-disable-next-line
 						console.log(error);
 					});
@@ -122,11 +131,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						} else {
 							setStore({ user: data.user, access_token: data.access_token, logged: data.logged });
 							sessionStorage.setItem("access_token", data.access_token);
+							setStore({
+								toast_news: {
+									msg: "Conexión Exitosa, Bienvenido",
+									bg: "bg-success",
+									status: "Éxito"
+								}
+							});
+							$("#toast_news").toast("show");
 						}
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().show_toast_error("Error de Conexión... Intenta más tarde.");
+							getActions().connect_error();
 						}
 						//eslint-disable-next-line
 						console.log(error);
@@ -144,7 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => {
 						if (!response.ok) {
-							throw Error(response.status);
+							throw Error(response.statusText);
 						}
 						return response.json();
 					})
@@ -158,6 +175,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ provider: provider, services: data.services, user: data.user, offer_made: false });
 					})
 					.catch(error => {
+						if (error.name === "TypeError") {
+							getActions().connect_error();
+						}
 						//eslint-disable-next-line
 						console.log(error);
 					});
@@ -176,16 +196,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => {
 						if (!response.ok) {
-							throw Error(response.status);
+							throw Error(response.statusText);
 						}
 						return response.json();
 					})
 					.then(data => {
 						//eslint-disable-next-line
 						console.log(data.msg);
-						setStore({ offer_made: true });
+						setStore({ offer_made: true, toast_news: {
+							msg: "Oferta creada con éxtito.",
+							bg: "bg-success",
+							status: "Éxito"
+						}});
+						$("#toast_news").toast("show");
 					})
 					.catch(error => {
+						if (error.name === "TypeError") {
+							getActions().connect_error();
+						}
 						//eslint-disable-next-line
 						console.log(error);
 					});

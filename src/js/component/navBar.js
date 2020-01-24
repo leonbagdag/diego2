@@ -130,7 +130,7 @@ const DesktopNavbar = props => {
 				</li>
 				<li className="nav-item">
 					<Link to="/login" className="nav-link">
-						<span type="button" className="btn btn-outline-primary">
+						<span type="button" role="button" className="btn btn-outline-primary">
 							Iniciar Sesión
 						</span>
 					</Link>
@@ -178,17 +178,19 @@ export const NavBar = () => {
 			<div className="container" aria-live="polite" aria-atomic="true" style={{ position: "relative" }}>
 				<div
 					className="toast"
-					id="error_toast"
+					id="toast_news"
 					style={{ position: "absolute", top: "10px", right: "0px" }}
-					data-delay="2000">
+					data-delay="1500">
 					<div className="toast-header">
-						<span className="bg-danger mx-2 rounded-lg" style={{ width: "20px", height: "20px" }}></span>
-						<strong className="mr-auto">Error</strong>
+						<span
+							className={`${store.toast_news.bg} mx-2 rounded-lg`}
+							style={{ width: "20px", height: "20px" }}></span>
+						<strong className="mr-auto">{store.toast_news.status}</strong>
 						<button type="button" className="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div className="toast-body">{store.toast_error}</div>
+					<div className="toast-body">{store.toast_news.msg}</div>
 				</div>
 			</div>
 		</div>
