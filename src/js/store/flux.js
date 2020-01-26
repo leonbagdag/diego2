@@ -24,11 +24,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			comunas: [],
 			offer_made: false,
-			api_error_msg: {
-				new_msg: false,
-				msg: ""
-			},
-			toast_news: {}
+			toast_news: {},
+			login_form_error: {}
 		},
 		actions: {
 			connect_error: () => {
@@ -48,10 +45,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("services clean");
 			},
 
-			clean_error: () => {
-				setStore({ api_error_msg: { new_msg: false, msg: "" } }); // limpia variable de mensajes de error
-				//eslint-disable-next-line
-				console.log("error msg clean");
+			clean_loginForm: () => {
+				setStore({ login_form_error: {} });
 			},
 
 			get_app_data: () => {
@@ -126,8 +121,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
+						let error = { msg: "", target: "" };
 						if ("Error" in data) {
-							setStore({ api_error_msg: { new_msg: true, msg: data.Error } });
+							if (data.Error.search("Email") >= 0) {
+								error = { msg: data.Error, target: "email" };
+							} else if (data.Error.search("Contraseña") >= 0) {
+								error = { msg: data.Error, target: "password" };
+							}
+							setStore({
+								toast_news: {
+									msg: data.Error,
+									bg: "bg-danger",
+									status: "Error"
+								},
+								login_form_error: error
+							});
+							$("#toast_news").toast("show");
 						} else {
 							setStore({ user: data.user, access_token: data.access_token, logged: data.logged });
 							sessionStorage.setItem("access_token", data.access_token);
@@ -203,11 +212,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						//eslint-disable-next-line
 						console.log(data.msg);
-						setStore({ offer_made: true, toast_news: {
-							msg: "Oferta creada con éxtito.",
-							bg: "bg-success",
-							status: "Éxito"
-						}});
+						setStore({
+							offer_made: true,
+							toast_news: {
+								msg: "Oferta creada con éxtito.",
+								bg: "bg-success",
+								status: "Éxito"
+							}
+						});
 						$("#toast_news").toast("show");
 					})
 					.catch(error => {
