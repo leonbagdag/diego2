@@ -24,9 +24,7 @@ export const Registro = () => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		//eslint-disable-next-line
-		console.log(state);
-		// actions.registro(state);
+		actions.registro(state);
 	};
 
 	useEffect(() => {
@@ -70,11 +68,15 @@ export const Registro = () => {
 									required
 								/>
 							</div>
-							<div className="form-group mx-auto">
+							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
 								<label htmlFor="userEmail">Email</label>
 								<input
 									type="email"
-									className="form-control"
+									className={
+										store.form_api_error.target === "email"
+											? "form-control is-invalid"
+											: "form-control"
+									}
 									id="email"
 									aria-describedby="emailHelp"
 									placeholder="Ingresa tu email"
@@ -82,30 +84,41 @@ export const Registro = () => {
 									onChange={handleChange}
 									required
 								/>
+								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>
-							<div className="form-group mx-auto">
+							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
 								<label htmlFor="userPassword">Contraseña</label>
 								<input
 									type="password"
-									className="form-control"
+									className={
+										store.form_api_error.target === "password"
+											? "form-control is-invalid"
+											: "form-control"
+									}
 									id="password"
 									placeholder="Contraseña"
 									value={state.password || ""}
 									onChange={handleChange}
 									required
 								/>
+								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>
-							<div className="form-group mx-auto">
+							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
 								<label htmlFor="userPassword">Repite tu Contraseña</label>
 								<input
 									type="password"
-									className="form-control"
+									className={
+										store.form_api_error.target === "re_password"
+											? "form-control is-invalid"
+											: "form-control"
+									}
 									id="re_password"
 									placeholder="Repite tu contraseña"
 									value={state.re_password || ""}
 									onChange={handleChange}
 									required
 								/>
+								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>
 							<button type="submit" className="btn btn-primary mx-auto">
 								Registrarme
