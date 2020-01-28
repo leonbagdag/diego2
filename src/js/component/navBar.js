@@ -130,9 +130,9 @@ const DesktopNavbar = props => {
 				</li>
 				<li className="nav-item">
 					<Link to="/login" className="nav-link">
-						<span type="button" role="button" className="btn btn-outline-primary">
+						<button type="button" role="button" className="btn btn-outline-primary">
 							Iniciar Sesión
-						</span>
+						</button>
 					</Link>
 				</li>
 			</ul>

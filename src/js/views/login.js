@@ -5,23 +5,32 @@ import { Context } from "../store/appContext";
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 
-	const [state, setState] = useState([
-		{
-			email: "",
-			password: ""
-		}
-	]);
+	const [state, setState] = useState({
+		email: "",
+		password: ""
+	});
 
 	const handleChange = event => {
 		const new_state = Object.assign(state, { [event.target.id]: event.target.value });
 		setState({ ...new_state });
-		actions.clean_loginForm();
+		if (store.form_api_error.target !== undefined) {
+			actions.clear_form_error();
+		}
 	};
 
 	const handleSubmit = event => {
 		event.preventDefault();
+		//eslint-disable-next-line
+		console.log(state);
 		actions.login(state);
 	};
+
+	useEffect(() => {
+		//component will Unmount
+		return () => {
+			actions.clear_form_error();
+		};
+	}, []);
 
 	if (store.logged) {
 		return <Redirect to="/" />;
@@ -36,35 +45,35 @@ export const Login = () => {
 								<input
 									type="email"
 									className={
-										store.login_form_error.target === "email"
+										store.form_api_error.target === "email"
 											? "form-control is-invalid"
 											: "form-control"
 									}
 									id="email"
 									aria-describedby="emailHelp"
 									placeholder="Ingresa email"
-									value={state.email}
+									value={state.email || ""}
 									onChange={handleChange}
 									required
 								/>
-								<div className="invalid-tooltip">{store.login_form_error.msg}</div>
+								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>
 							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
 								<label htmlFor="password">Contraseña</label>
 								<input
 									type="password"
 									className={
-										store.login_form_error.target === "password"
+										store.form_api_error.target === "password"
 											? "form-control is-invalid"
 											: "form-control"
 									}
 									id="password"
 									placeholder="Ingresa tu contraseña"
-									value={state.password}
+									value={state.password || ""}
 									onChange={handleChange}
 									required
 								/>
-								<div className="invalid-tooltip">{store.login_form_error.msg}</div>
+								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>
 							<button type="submit" className="btn btn-primary mx-auto">
 								Ingresar

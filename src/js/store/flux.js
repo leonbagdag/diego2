@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			comunas: [],
 			offer_made: false,
 			toast_news: {},
-			login_form_error: {}
+			form_api_error: {}
 		},
 		actions: {
 			connect_error: () => {
@@ -45,8 +45,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("services clean");
 			},
 
-			clean_loginForm: () => {
-				setStore({ login_form_error: {} });
+			clear_form_error: () => {
+				setStore({ form_api_error: {} });
+				//eslint-disable-next-line
+				console.log("errors in form clear");
 			},
 
 			get_app_data: () => {
@@ -107,7 +109,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			login: credentials => {
-				const store = getStore();
 				fetch(API_URL + "/login", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -121,7 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						let error = { msg: "", target: "" };
+						let error = {};
 						if ("Error" in data) {
 							if (data.Error.search("Email") >= 0) {
 								error = { msg: data.Error, target: "email" };
@@ -134,7 +135,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 									bg: "bg-danger",
 									status: "Error"
 								},
-								login_form_error: error
+								form_api_error: error
 							});
 							$("#toast_news").toast("show");
 						} else {
@@ -143,6 +144,61 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({
 								toast_news: {
 									msg: "Conexión Exitosa, Bienvenido",
+									bg: "bg-success",
+									status: "Éxito"
+								}
+							});
+							$("#toast_news").toast("show");
+						}
+					})
+					.catch(error => {
+						if (error.name === "TypeError") {
+							getActions().connect_error();
+						}
+						//eslint-disable-next-line
+						console.log(error);
+					});
+			},
+
+			registro: new_user => {
+				fetch(API_URL + "/registro", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					mode: "cors",
+					body: JSON.stringify({
+						email: new_user.email,
+						password: new_user.password,
+						f_name: new_user.f_name,
+						l_name: new_user.l_name
+					})
+				})
+					.then(response => {
+						if (!response.ok && !response.status === "400") {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						let error = {};
+						if ("Error" in data) {
+							if (data.Error.search("Email") >= 0) {
+								error = { msg: data.Error, target: "email" };
+							} else if (data.Error.search("Contraseña") >= 0) {
+								error = { msg: data.Error, target: "password" };
+							}
+							setStore({
+								toast_news: {
+									msg: data.Error,
+									bg: "bg-danger",
+									status: "Error"
+								},
+								form_api_error: error
+							});
+							$("#toast_news").toast("show");
+						} else {
+							setStore({
+								toast_news: {
+									msg: data.success,
 									bg: "bg-success",
 									status: "Éxito"
 								}
