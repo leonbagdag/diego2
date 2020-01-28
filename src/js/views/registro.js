@@ -43,7 +43,7 @@ export const Registro = () => {
 					<div className="card-body">
 						<form id="loginForm" onSubmit={handleSubmit}>
 							<div className="form-group mx-auto">
-								<label htmlFor="f_name">Primer Nombre:</label>
+								<label htmlFor="f_name">Nombre:</label>
 								<input
 									type="text"
 									className="form-control"
@@ -56,7 +56,7 @@ export const Registro = () => {
 								/>
 							</div>
 							<div className="form-group mx-auto">
-								<label htmlFor="l_name">Apellido Paterno:</label>
+								<label htmlFor="l_name">Apellido:</label>
 								<input
 									type="text"
 									className="form-control"

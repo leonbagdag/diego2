@@ -51,6 +51,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("errors in form clear");
 			},
 
+			set_form_error: error => {
+				setStore({
+					form_api_error: {
+						msg: error.msg,
+						target: error.target
+					}
+				});
+			},
+
 			get_app_data: () => {
 				fetch(API_URL + "/app-data", {
 					headers: { "Content-Type": "application/json" },
