@@ -19,14 +19,12 @@ export const ServiceView = props => {
 	useEffect(() => {
 		// component will unmount
 		return () => {
-			actions.clean_services();
+			actions.clear_services();
 		};
 	}, []);
 
 	if (!store.logged) {
 		return <Redirect to="/login" />;
-	} else if (store.offer_made) {
-		return <Redirect to="/find/service-request" />;
 	} else {
 		return (
 			<div className="container-fluid">

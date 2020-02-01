@@ -25,7 +25,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				all_regions: []
 			},
 			comunas: [],
-			offer_made: false,
 			toast_news: {},
 			form_api_error: {}
 		},
@@ -41,10 +40,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				$("#toast_news").toast("show");
 			},
 
-			clean_services: () => {
+			clear_services: () => {
 				setStore({ services: [] });
-				//eslint-disable-next-line
-				console.log("services clean");
 			},
 
 			clear_form_error: () => {
@@ -166,8 +163,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (error.name === "TypeError") {
 							getActions().connect_error();
 						}
-						//eslint-disable-next-line
-						console.log(error);
 						history.push("/");
 					});
 			},
@@ -223,8 +218,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (error.name === "TypeError") {
 							getActions().connect_error();
 						}
-						//eslint-disable-next-line
-						console.log(error);
+						history.push("/");
 					});
 			},
 
@@ -250,7 +244,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let provider = data.provider;
 						provider.categories = categories;
 
-						setStore({ provider: provider, services: data.services, user: data.user, offer_made: false });
+						setStore({ provider: provider, services: data.services, user: data.user });
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
@@ -282,7 +276,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						//eslint-disable-next-line
 						console.log(data.msg);
 						setStore({
-							offer_made: true,
 							toast_news: {
 								msg: "Oferta creada con éxtito.",
 								bg: "bg-success",
@@ -290,13 +283,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 							}
 						});
 						$("#toast_news").toast("show");
+						history.push("/find/service-request");
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
 							getActions().connect_error();
 						}
-						//eslint-disable-next-line
-						console.log(error);
 					});
 			},
 

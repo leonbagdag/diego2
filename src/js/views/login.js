@@ -20,9 +20,21 @@ export const Login = () => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		//eslint-disable-next-line
-		console.log(state);
-		actions.login(state);
+		let reEmail = /\S+@\S+\.\S+/; //expresion regular para verificar email.
+
+		if (!reEmail.test(state.email)) {
+			actions.set_form_error({
+				msg: "Ingresa un email válido",
+				target: "email"
+			});
+		} else if (state.password === "") {
+			actions.set_form_error({
+				msg: "Ingresa tu contraseña",
+				target: "password"
+			});
+		} else {
+			actions.login(state);
+		}
 	};
 
 	useEffect(() => {
@@ -39,7 +51,7 @@ export const Login = () => {
 			<div className="container">
 				<div className="card mx-auto mt-5" style={{ maxWidth: "500px" }}>
 					<div className="card-body">
-						<form id="loginForm" onSubmit={handleSubmit}>
+						<form id="loginForm" onSubmit={handleSubmit} noValidate>
 							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
 								<label htmlFor="email">Email</label>
 								<input
@@ -54,7 +66,6 @@ export const Login = () => {
 									placeholder="Ingresa email"
 									value={state.email || ""}
 									onChange={handleChange}
-									required
 								/>
 								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>
@@ -71,7 +82,6 @@ export const Login = () => {
 									placeholder="Ingresa tu contraseña"
 									value={state.password || ""}
 									onChange={handleChange}
-									required
 								/>
 								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>

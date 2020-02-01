@@ -9,11 +9,12 @@ export const BuscarServicio = () => {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
+		// component-did-mount, fetch api to get the latest services requests.-
 		actions.find_services();
 	}, []);
 
 	if (!store.logged) {
-		return <Redirect to="/login" />;
+		return <Redirect to="/login" />; //Protected view
 	} else {
 		return (
 			<div className="container-fluid mt-3">
