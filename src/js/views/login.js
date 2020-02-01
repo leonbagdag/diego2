@@ -38,7 +38,7 @@ export const Login = () => {
 	};
 
 	useEffect(() => {
-		//component will Unmount
+		//component will Unmount, clear form errors in store.
 		return () => {
 			actions.clear_form_error();
 		};

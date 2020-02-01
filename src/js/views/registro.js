@@ -63,7 +63,7 @@ export const Registro = () => {
 	};
 
 	useEffect(() => {
-		//eslint-disable-next-line
+		//component will unmount, clear form erorrs in store.
 		return () => {
 			actions.clear_form_error();
 		};

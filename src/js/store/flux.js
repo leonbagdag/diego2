@@ -2,6 +2,11 @@ import history from "../views/history";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	const API_URL = "http://localhost:3000";
+	const connect_error_msg = {
+		msg: "Error de Conexión, intenta más tarde...",
+		bg: "bg-danger",
+		status: "Error"
+	};
 	return {
 		store: {
 			user: {},
@@ -29,16 +34,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			form_api_error: {}
 		},
 		actions: {
-			connect_error: () => {
+			display_toast: body => { // permite mostrar mensajes tipo toast desde cualquier vista.
 				setStore({
-					toast_news: {
-						msg: "Error de Conexión... Intenta más tarde.",
-						bg: "bg-danger",
-						status: "Error"
-					}
+					toast_news: { ...body }
 				});
-				$("#toast_news").toast("show");
-			},
+				$("#toast_news").toast("show"); //jquery. bootstrap documentation: https://getbootstrap.com/docs/4.4/components/toasts/
+			}, //#toast_news is located in navBar component.
 
 			clear_services: () => {
 				setStore({ services: [] });
@@ -46,16 +47,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			clear_form_error: () => {
 				setStore({ form_api_error: {} });
-				//eslint-disable-next-line
-				console.log("errors in form clear");
 			},
 
-			set_form_error: error => {
+			set_form_error: error => { // error a mostrar en formularios en forma de tooltip.
 				setStore({
-					form_api_error: {
-						msg: error.msg,
-						target: error.target
-					}
+					form_api_error: { ...error }
 				});
 			},
 
@@ -75,10 +71,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().connect_error();
+							getActions().display_toast(connect_error_msg);
 						}
-						//eslint-disable-next-line
-						console.log(error);
 					});
 			},
 
@@ -98,10 +92,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().connect_error();
+							getActions().display_toast(connect_error_msg);
 						}
-						//eslint-disable-next-line
-						console.log(error);
 					});
 			},
 
@@ -130,38 +122,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						let error = {};
 						if ("Error" in data) {
 							if (data.Error.search("Email") >= 0) {
-								error = { msg: data.Error, target: "email" };
-							} else if (data.Error.search("Contraseña") >= 0) {
-								error = { msg: data.Error, target: "password" };
-							}
-							setStore({
-								toast_news: {
+								getActions().set_form_error({
 									msg: data.Error,
-									bg: "bg-danger",
-									status: "Error"
-								},
-								form_api_error: error
-							});
-							$("#toast_news").toast("show");
+									target: "email"
+								});
+							} else if (data.Error.search("Contraseña") >= 0) {
+								getActions().set_form_error({
+									msg: data.Error,
+									target: "password"
+								});
+							}
 						} else {
 							setStore({ user: data.user, access_token: data.access_token, logged: data.logged });
 							sessionStorage.setItem("access_token", data.access_token);
-							setStore({
-								toast_news: {
-									msg: "Conexión Exitosa, Bienvenido",
-									bg: "bg-success",
-									status: "Éxito"
-								}
+							getActions().display_toast({
+								msg: data.success, // En json, se devuelve "success": "msg..."
+								bg: "bg-success",
+								status: "Éxito"
 							});
-							$("#toast_news").toast("show");
 						}
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().connect_error();
+							getActions().display_toast(connect_error_msg);
 						}
 						history.push("/");
 					});
@@ -186,37 +171,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						let error = {};
 						if ("Error" in data) {
 							if (data.Error.search("Email") >= 0) {
-								error = { msg: data.Error, target: "email" };
-							} else if (data.Error.search("Contraseña") >= 0) {
-								error = { msg: data.Error, target: "password" };
-							}
-							setStore({
-								toast_news: {
+								getActions().set_form_error({
 									msg: data.Error,
-									bg: "bg-danger",
-									status: "Error"
-								},
-								form_api_error: error
-							});
-							$("#toast_news").toast("show");
+									target: "email"
+								});
+							} else if (data.Error.search("Contraseña") >= 0) {
+								getActions().set_form_error({
+									msg: data.Error,
+									target: "password"
+								});
+							}
 						} else {
-							setStore({
-								toast_news: {
-									msg: data.success,
-									bg: "bg-success",
-									status: "Éxito"
-								}
+							getActions().display_toast({
+								msg: data.success, //desde API se responde con un json "success": "msg..."
+								bg: "bg-success",
+								status: "Éxito"
 							});
-							$("#toast_news").toast("show");
 							history.push("/login");
 						}
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().connect_error();
+							getActions().display_toast(connect_error_msg);
 						}
 						history.push("/");
 					});
@@ -248,10 +226,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().connect_error();
+							getActions().display_toast(connect_error_msg);
 						}
-						//eslint-disable-next-line
-						console.log(error);
 					});
 			},
 
@@ -273,21 +249,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(data => {
-						//eslint-disable-next-line
-						console.log(data.msg);
-						setStore({
-							toast_news: {
-								msg: "Oferta creada con éxtito.",
-								bg: "bg-success",
-								status: "Éxito"
-							}
+						getActions().display_toast({
+							msg: data.msg,
+							bg: "bg-success",
+							status: "Éxito"
 						});
-						$("#toast_news").toast("show");
 						history.push("/find/service-request");
 					})
 					.catch(error => {
 						if (error.name === "TypeError") {
-							getActions().connect_error();
+							getActions().display_toast(connect_error_msg);
 						}
 					});
 			},
