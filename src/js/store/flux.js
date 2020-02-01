@@ -1,3 +1,5 @@
+import history from "../views/history";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	const API_URL = "http://localhost:3000";
 	return {
@@ -166,6 +168,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 						//eslint-disable-next-line
 						console.log(error);
+						history.push("/");
 					});
 			},
 
