@@ -24,7 +24,21 @@ export const Registro = () => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		actions.registro(state);
+		let re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; //expresion regular para verificar contraseña
+
+		if (!re.test(state.password)) {
+			actions.set_form_error({
+				msg: "Contraseña inválida",
+				target: "password"
+			});
+		} else if (state.password !== state.re_password) {
+			actions.set_form_error({
+				msg: "Contraseña no coincide",
+				target: "re_password"
+			});
+		} else {
+			actions.registro(state);
+		}
 	};
 
 	useEffect(() => {
@@ -42,33 +56,35 @@ export const Registro = () => {
 				<div className="card mx-auto mt-5" style={{ maxWidth: "500px" }}>
 					<div className="card-body">
 						<form id="loginForm" onSubmit={handleSubmit}>
-							<div className="form-group mx-auto">
-								<label htmlFor="f_name">Nombre:</label>
-								<input
-									type="text"
-									className="form-control"
-									id="f_name"
-									aria-describedby="first_name"
-									placeholder="Ingresa tu primer nombre"
-									value={state.f_name || ""}
-									onChange={handleChange}
-									required
-								/>
+							<div className="row">
+								<div className="form-group mx-auto col-sm-6">
+									<label htmlFor="f_name">Nombre:</label>
+									<input
+										type="text"
+										className="form-control"
+										id="f_name"
+										aria-describedby="first_name"
+										placeholder="Ingresa tu primer nombre"
+										value={state.f_name || ""}
+										onChange={handleChange}
+										required
+									/>
+								</div>
+								<div className="form-group mx-auto col-sm-6">
+									<label htmlFor="l_name">Apellido:</label>
+									<input
+										type="text"
+										className="form-control"
+										id="l_name"
+										aria-describedby="last_name"
+										placeholder="Ingresa tu apellido"
+										value={state.l_name || ""}
+										onChange={handleChange}
+										required
+									/>
+								</div>
 							</div>
-							<div className="form-group mx-auto">
-								<label htmlFor="l_name">Apellido:</label>
-								<input
-									type="text"
-									className="form-control"
-									id="l_name"
-									aria-describedby="last_name"
-									placeholder="Ingresa tu apellido"
-									value={state.l_name || ""}
-									onChange={handleChange}
-									required
-								/>
-							</div>
-							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
+							<div className="form-group mx-auto" style={{ position: "relative" }}>
 								<label htmlFor="userEmail">Email</label>
 								<input
 									type="email"
@@ -86,7 +102,7 @@ export const Registro = () => {
 								/>
 								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
 							</div>
-							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
+							<div className="form-group mx-auto" style={{ position: "relative" }}>
 								<label htmlFor="userPassword">Contraseña</label>
 								<input
 									type="password"
@@ -101,7 +117,14 @@ export const Registro = () => {
 									onChange={handleChange}
 									required
 								/>
-								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
+								<small className="form-text text-muted">
+									La contraseña debe contener al menos 6 caracteres, una letra mayúscula y un número
+								</small>
+								<div
+									className="invalid-tooltip"
+									style={{ position: "absolute", right: "0px", top: "0px" }}>
+									{store.form_api_error.msg}
+								</div>
 							</div>
 							<div className="form-group mx-auto" style={{ position: "relative", marginBottom: "35px" }}>
 								<label htmlFor="userPassword">Repite tu Contraseña</label>
@@ -118,9 +141,13 @@ export const Registro = () => {
 									onChange={handleChange}
 									required
 								/>
-								<div className="invalid-tooltip">{store.form_api_error.msg}</div>
+								<div
+									className="invalid-tooltip"
+									style={{ position: "absolute", right: "0px", top: "0px" }}>
+									{store.form_api_error.msg}
+								</div>
 							</div>
-							<button type="submit" className="btn btn-primary mx-auto">
+							<button type="button" className="btn btn-primary mx-auto" onClick={handleSubmit}>
 								Registrarme
 							</button>
 						</form>

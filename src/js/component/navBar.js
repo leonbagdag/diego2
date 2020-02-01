@@ -179,7 +179,7 @@ export const NavBar = () => {
 				<div
 					className="toast"
 					id="toast_news"
-					style={{ position: "absolute", top: "10px", right: "0px" }}
+					style={{ position: "absolute", top: "10px", right: "10px" }}
 					data-delay="1500">
 					<div className="toast-header">
 						<span

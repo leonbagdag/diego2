@@ -213,6 +213,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								}
 							});
 							$("#toast_news").toast("show");
+							history.push("/login");
 						}
 					})
 					.catch(error => {
