@@ -11,10 +11,13 @@ export const ServiceForm = () => {
 	const { store, actions } = useContext(Context);
 
 	const [state, setState] = useState({
-		request_name: "",
-		request_description: "",
-		category_selected: "", //debe ser igual al id de la categoría a la que pertenece la solicitud
-		address: {}
+		name: "",
+		description: "",
+		category: 0, //debe ser igual al id de la categoría a la que pertenece la solicitud.
+		street: "",
+		home_number: "",
+		more_info: "",
+		comuna: 0 // debe ser igual al id de la comuna donde se requere el servicio.
 	});
 
 	const handleChange = event => {
@@ -32,7 +35,12 @@ export const ServiceForm = () => {
 	};
 
 	const select_category = id => {
-		const new_state = Object.assign(state, { category_selected: id });
+		const new_state = Object.assign(state, { category: id });
+		setState({ ...new_state });
+	};
+
+	const select_comuna = id => {
+		const new_state = Object.assign(state, { comuna: id });
 		setState({ ...new_state });
 	};
 
@@ -52,17 +60,17 @@ export const ServiceForm = () => {
 					<div className="card-body">
 						<form id="service_form" onSubmit={handleSubmit} noValidate>
 							<div className="form-group mx-auto" style={{ position: "relative" }}>
-								<label htmlFor="serv_name">Ponle un nombre a tu solicitud</label>
+								<label htmlFor="serv_name">Ponle un nombre a tu solicitud (*)</label>
 								<input
 									type="text"
 									className={
-										store.form_api_error.target === "request_name"
+										store.form_api_error.target === "name"
 											? "form-control is-invalid"
 											: "form-control"
 									}
-									id="request_name"
+									id="name"
 									placeholder="p. ej.: Trámite en registro civil"
-									value={state.request_name || ""}
+									value={state.name || ""}
 									onChange={handleChange}
 								/>
 								<div
@@ -72,17 +80,17 @@ export const ServiceForm = () => {
 								</div>
 							</div>
 							<div className="form-group mx-auto" style={{ position: "relative" }}>
-								<label htmlFor="serv_name">Ingresa una breve descripción de tu requerimiento</label>
+								<label htmlFor="serv_name">Ingresa una breve descripción de tu requerimiento (*)</label>
 								<textarea
 									type="text"
 									className={
-										store.form_api_error.target === "request_description"
+										store.form_api_error.target === "description"
 											? "form-control is-invalid"
 											: "form-control"
 									}
-									id="request_description"
+									id="description"
 									placeholder="p. ej.: Retirar documento notariado"
-									value={state.request_description || ""}
+									value={state.description || ""}
 									onChange={handleChange}
 									rows="3"></textarea>
 								<div
@@ -98,15 +106,13 @@ export const ServiceForm = () => {
 								<input type="file" className="form-control-file" id="service_file" />
 							</div>
 							<div className="form-group">
-								<label htmlFor="service_category">¿A qué categoría pertenece tu solicitud?</label>
+								<label htmlFor="service_category">¿A qué categoría pertenece tu solicitud? (*)</label>
 								<div className="row d-flex justify-content-around container">
 									{store.app_data.all_categories.map(item => {
 										return (
 											<button
 												className={
-													state.category_selected === item.id
-														? cat_style.active
-														: cat_style.inactive
+													state.category === item.id ? cat_style.active : cat_style.inactive
 												}
 												style={{ maxWidth: "300px" }}
 												key={item.id.toString()}
@@ -125,6 +131,64 @@ export const ServiceForm = () => {
 									Si no encuentras una categoría que se adapte a tu solicitud, haz click{" "}
 									<a href="#">aquí</a>
 								</small>
+							</div>
+							<div className="container">
+								<h5>Indícanos la dirección donde se requiere el servicio (*)</h5>
+							</div>
+							<div className="row">
+								<div className="form-group mx-auto col-sm-4" style={{ position: "relative" }}>
+									<label>Calle (*)</label>
+									<input
+										type="text"
+										className={
+											store.form_api_error.target === "street"
+												? "form-control is-invalid"
+												: "form-control"
+										}
+										id="street"
+										placeholder="Calle/Avenida"
+										value={state.street || ""}
+										onChange={handleChange}
+									/>
+									<div
+										className="invalid-tooltip"
+										style={{ position: "absolute", right: "0px", top: "0px" }}>
+										{store.form_api_error.msg}
+									</div>
+								</div>
+								<div className="form-group mx-auto col-sm-4" style={{ position: "relative" }}>
+									<label>Número (*)</label>
+									<input
+										type="text"
+										className={
+											store.form_api_error.target === "home_number"
+												? "form-control is-invalid"
+												: "form-control"
+										}
+										id="home_number"
+										aria-describedby="home_number"
+										placeholder="Número de domicilio"
+										value={state.home_number || ""}
+										onChange={handleChange}
+									/>
+									<div
+										className="invalid-tooltip"
+										style={{ position: "absolute", right: "0px", top: "0px" }}>
+										{store.form_api_error.msg}
+									</div>
+								</div>
+								<div className="form-group mx-auto col-sm-4" style={{ position: "relative" }}>
+									<label>Información Adicional</label>
+									<input
+										type="text"
+										className={"form-control"}
+										id="more_info"
+										aria-describedby="more_info"
+										placeholder="Otra información"
+										value={state.more_info || ""}
+										onChange={handleChange}
+									/>
+								</div>
 							</div>
 						</form>
 					</div>
