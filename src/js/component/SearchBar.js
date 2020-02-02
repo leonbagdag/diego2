@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 
 const SearchBar = () => {
     const { store, actions } = useContext(Context);
-    return 
+    return <h1>hi there</h1>
 };
 
 export default SearchBar;

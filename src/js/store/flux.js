@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	};
 	return {
 		store: {
-			user: {},
+			user: {}, // dentro de user, está el id de la comuna que el usuario estableció en su dirección personal.
 			provider: {
 				categories: [],
 				contracts: [],
@@ -18,7 +18,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				score: 0
 			},
 			employer: {},
-			all_categories: {},
 			stats: {
 				top_categories: []
 			},
@@ -27,14 +26,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logged: false,
 			app_data: {
 				all_categories: [],
-				all_regions: []
+				all_regions: [] // se utiliza la region para hacer fetch y determinar cuales son las comunas de esa region
 			},
-			comunas: [],
+			comunas: [], // se obtienen comunas solo de la region seleccionada por el usuario.
 			toast_news: {},
 			form_api_error: {}
 		},
 		actions: {
-			display_toast: body => { // permite mostrar mensajes tipo toast desde cualquier vista.
+			display_toast: body => {
+				// permite mostrar mensajes tipo toast desde cualquier vista.
 				setStore({
 					toast_news: { ...body }
 				});
@@ -46,16 +46,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			clear_form_error: () => {
+				//elimina errores en formularios, para evitar que aparezcan en formularios de distintas vistas
 				setStore({ form_api_error: {} });
 			},
 
-			set_form_error: error => { // error a mostrar en formularios en forma de tooltip.
+			set_form_error: error => {
+				// error a mostrar en formularios en forma de tooltip.
 				setStore({
 					form_api_error: { ...error }
 				});
 			},
 
 			get_app_data: () => {
+				// recopila los datos iniciales requeridos por la app como las categorias generales y las regiones
 				fetch(API_URL + "/app-data", {
 					headers: { "Content-Type": "application/json" },
 					mode: "cors"
@@ -77,6 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			get_stats: () => {
+				//obtiene las estadísticas a mostrar en el home de la aplicación.
 				fetch(API_URL + "/", {
 					headers: { "Content-Type": "application/json" },
 					mode: "cors"
@@ -98,6 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			get_session: () => {
+				// obtiene credenciales guardadas en la session del navegador, al hacer refresh
 				const access_token = sessionStorage.getItem("access_token");
 				if (access_token === null) {
 					//eslint-disable-next-line
@@ -234,7 +239,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			create_offer: service => {
 				const store = getStore();
 				fetch(`${API_URL}/service-request/${service.id}/offer`, {
-					method: "POST",
+					method: "POST", //post en esta URL crea una nueva oferta al servicio con ID passed.
 					headers: {
 						"Content-Type": "application/json",
 						Authorization: "Bearer " + store.access_token
