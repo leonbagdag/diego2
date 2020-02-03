@@ -17,6 +17,7 @@ export const ServiceForm = () => {
 		street: "",
 		home_number: "",
 		more_info: "",
+		region: 0, // debe ser igual al id de la región.
 		comuna: 0 // debe ser igual al id de la comuna donde se requere el servicio.
 	});
 
@@ -181,13 +182,45 @@ export const ServiceForm = () => {
 									<label>Información Adicional</label>
 									<input
 										type="text"
-										className={"form-control"}
+										className="form-control"
 										id="more_info"
 										aria-describedby="more_info"
 										placeholder="Otra información"
 										value={state.more_info || ""}
 										onChange={handleChange}
 									/>
+								</div>
+							</div>
+							<div className="row">
+								<div className="form-group mx-auto col-sm-4" style={{ position: "relative" }}>
+									<label>Región (*)</label>
+									<select
+										type="text"
+										className={
+											store.form_api_error.target === "region"
+												? "form-control is-invalid"
+												: "form-control"
+										}
+										id="region"
+										placeholder="Calle/Avenida"
+										value={state.region || ""}
+										onChange={handleChange}>
+										<option selected value="0">
+											Región...
+										</option>
+										{store.app_data.all_regions.map(item => {
+											return (
+												<option key={item.id.toString()} value={item.id}>
+													{item.name}
+												</option>
+											);
+										})}
+									</select>
+									<div
+										className="invalid-tooltip"
+										style={{ position: "absolute", right: "0px", top: "0px" }}>
+										{store.form_api_error.msg}
+									</div>
 								</div>
 							</div>
 						</form>
