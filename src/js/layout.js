@@ -6,7 +6,7 @@ import { Home } from "./views/home";
 import { BuscarServicio } from "./views/buscarServicio";
 import { ControlPanel } from "./views/controlPanel";
 import { ServiceForm } from "./views/serviceForm";
-import { UserProfile } from "./views/userProfile";
+import { UserProfile } from "./views/profile";
 import { ServiceView } from "./views/serviceView";
 import { HabAdmin } from "./views/habAdmin";
 import { Login } from "./views/login";
