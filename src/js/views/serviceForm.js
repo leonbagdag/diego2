@@ -17,8 +17,8 @@ export const ServiceForm = () => {
 		street: "",
 		home_number: "",
 		more_info: "",
-		region: 0, // debe ser igual al id de la región.
-		comuna: 0 // debe ser igual al id de la comuna donde se requere el servicio.
+		region: "Region...", // debe ser igual al id de la región.
+		comuna: "Comuna..." // debe ser igual al id de la comuna donde se requere el servicio.
 	});
 
 	const handleChange = event => {
@@ -29,19 +29,19 @@ export const ServiceForm = () => {
 		}
 	};
 
+	const regionSelect = event => {
+		//eslint-disable-next-line
+		console.log(event.target);
+	};
+
 	const handleSubmit = event => {
 		event.preventDefault();
 		//eslint-disable-next-line
-		console.log("submit detected");
+		console.log(state);
 	};
 
 	const select_category = id => {
 		const new_state = Object.assign(state, { category: id });
-		setState({ ...new_state });
-	};
-
-	const select_comuna = id => {
-		const new_state = Object.assign(state, { comuna: id });
 		setState({ ...new_state });
 	};
 
@@ -195,22 +195,43 @@ export const ServiceForm = () => {
 								<div className="form-group mx-auto col-sm-4" style={{ position: "relative" }}>
 									<label>Región (*)</label>
 									<select
-										type="text"
 										className={
 											store.form_api_error.target === "region"
 												? "form-control is-invalid"
 												: "form-control"
 										}
 										id="region"
-										placeholder="Calle/Avenida"
-										value={state.region || ""}
+										value={state.region}
 										onChange={handleChange}>
-										<option selected value="0">
-											Región...
-										</option>
+										<option value="Región...">Región...</option>
 										{store.app_data.all_regions.map(item => {
 											return (
-												<option key={item.id.toString()} value={item.id}>
+												<option key={item.id.toString()} value={item.name}>
+													{item.name}
+												</option>
+											);
+										})}
+									</select>
+									<div
+										className="invalid-tooltip"
+										style={{ position: "absolute", right: "0px", top: "0px" }}>
+										{store.form_api_error.msg}
+									</div>
+								</div>
+								<div className="form-group mx-auto col-sm-4" style={{ position: "relative" }}>
+									<label>Comuna (*)</label>
+									<select
+										className={
+											store.form_api_error.target === "comuna"
+												? "form-control is-invalid"
+												: "form-control"
+										}
+										id="comuna"
+										value={state.comuna}
+										onChange={regionSelect}>
+										{store.comunas.map(item => {
+											return (
+												<option key={item.id.toString()} value={item.name}>
 													{item.name}
 												</option>
 											);
@@ -223,6 +244,9 @@ export const ServiceForm = () => {
 									</div>
 								</div>
 							</div>
+							<button type="button" className="btn btn-primary" onClick={handleSubmit}>
+								Solicitar
+							</button>
 						</form>
 					</div>
 				</div>

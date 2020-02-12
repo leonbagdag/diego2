@@ -28,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				all_categories: [],
 				all_regions: [] // se utiliza la region para hacer fetch y determinar cuales son las comunas de esa region
 			},
-			comunas: [], // se obtienen comunas solo de la region seleccionada por el usuario.
+			comunas: [{ name: "ñuñoa", id: 1 }], // se obtienen comunas solo de la region seleccionada por el usuario.
 			toast_news: {},
 			form_api_error: {}
 		},
