@@ -5,195 +5,165 @@ import "../../styles/Profile.scss";
 
 export const UserProfile = () => {
 	return (
-		<div className="container py-4 my-2">
-			<div className="row">
-				<div className="col-md-4 pr-md-5">
-					<img
-						className="w-100 rounded border"
-						src="https://www.researchgate.net/profile/Maria_Monreal2/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png"
-					/>
-					<div className="pt-4 mt-2">
-						<section className="mb-5 mb-md-0">
-							<h3 className="h6 font-weight-light text-secondary text-uppercase">Mis Habilidades</h3>
-							<div className="skills pt-1 row">
-								<div className="col-4 mb-2">
-									<div className="chart" data-percent="95" data-scale-color="#fff">
-										<span>PHP</span>
-									</div>
-								</div>
-								<div className="col-4 mb-2">
-									<div className="chart" data-percent="85" data-scale-color="#fff">
-										<span>Tramites Bancarios</span>
-									</div>
-								</div>
-								<div className="col-4 mb-2">
-									<div className="chart" data-percent="90" data-scale-color="#fff">
-										<span>Tramites Legales</span>
-									</div>
-								</div>
-								<div className="col-4 mb-2">
-									<div className="chart" data-percent="82" data-scale-color="#fff">
-										<span>Electricidad</span>
-									</div>
-								</div>
-								<div className="col-4 mb-2">
-									<div className="chart" data-percent="70" data-scale-color="#fff">
-										<span>Cuidado de Mascotas</span>
-									</div>
-								</div>
-								<div className="col-4 mb-2">
-									<div className="chart" data-percent="60" data-scale-color="#fff">
-										<span>ASP</span>
-									</div>
-								</div>
-							</div>
-						</section>
-					</div>
-				</div>
-				<div className="col-md-8">
-					<div className="d-flex align-items-center">
-						<h2 className="font-weight-bold m-0">Diego Rojas T.</h2>
-					</div>
-					<p className="lead mt-4">
-						All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
-						making this the first true generator on the Internet.
-					</p>
-					<section className="mt-5">
-						<h3 className="h6 font-weight-light text-secondary text-uppercase">Rankings</h3>
-						<div className="d-flex align-items-center">
-							<strong className="h1 font-weight-bold m-0 mr-3">4.85</strong>
-							<div>
-								<input
-									data-filled="fa fa-2x fa-star mr-1 text-warning"
-									data-empty="fa fa-2x fa-star-o mr-1 text-light"
-									value="5"
-									type="hidden"
-									className="rating"
-									data-readonly
-								/>
+		<div className="container emp-profile">
+			<form method="post">
+				<div className="row">
+					<div className="col-md-4">
+						<div className="profile-img">
+							<img
+								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+								alt=""
+							/>
+							<div className="file btn btn-lg btn-primary">
+								Change Photo
+								<input type="file" name="file" />
 							</div>
 						</div>
-						<section className="d-flex mt-5">
-							<button className="btn btn-primary mb-3">
-								<Link className="dropdown-item" to="/editeProfile">
-									Editar mi Perfil
-								</Link>
-							</button>
-						</section>
-					</section>
-					<section className="mt-4">
-						<ul className="nav nav-tabs" id="myTab" role="tablist">
-							<li className="nav-item">
-								<a
-									className="nav-link active"
-									id="home-tab"
-									data-toggle="tab"
-									href="#home"
-									role="tab"
-									aria-controls="home"
-									aria-selected="true">
-									Mis Datos
-								</a>
-							</li>
-							<li className="nav-item">
-								<a
-									className="nav-link"
-									id="profile-tab"
-									data-toggle="tab"
-									href="#profile"
-									role="tab"
-									aria-controls="profile"
-									aria-selected="false">
-									Mis Servicios
-								</a>
-							</li>
-							<li className="nav-item">
-								<a
-									className="nav-link"
-									id="contact-tab"
-									data-toggle="tab"
-									href="#contact"
-									role="tab"
-									aria-controls="contact"
-									aria-selected="false">
-									Mis Calificaciones
-								</a>
-							</li>
-						</ul>
-						<div className="tab-content py-4" id="myTabContent">
+					</div>
+					<div className="col-md-6">
+						<div className="profile-head">
+							<h5>Kshiti Ghelani</h5>
+							<h6>Web Developer and Designer</h6>
+							<p className="proile-rating">
+								RANKINGS : <span>8/10</span>
+							</p>
+							<ul className="nav nav-tabs" id="myTab" role="tablist">
+								<li className="nav-item">
+									<a
+										className="nav-link active"
+										id="home-tab"
+										data-toggle="tab"
+										href="#home"
+										role="tab"
+										aria-controls="home"
+										aria-selected="true">
+										About
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div className="col-md-2">
+						<input type="submit" className="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-md-4">
+						<div className="profile-work">
+							<p>SKILLS</p>
+							<a href="">Web Designer</a>
+							<br />
+							<a href="">Web Developer</a>
+							<br />
+							<a href="">WordPress</a>
+							<br />
+							<a href="">WooCommerce</a>
+							<br />
+							<a href="">PHP, .Net</a>
+							<br />
+						</div>
+					</div>
+					<div className="col-md-8">
+						<div className="tab-content profile-tab" id="myTabContent">
 							<div
-								className="tab-pane py-3 fade show active"
+								className="tab-pane fade show active"
 								id="home"
 								role="tabpanel"
 								aria-labelledby="home-tab">
-								<h6 className="text-uppercase font-weight-light text-secondary">Contact Information</h6>
-								<dl className="row mt-4 mb-4 pb-3">
-									<dt className="col-sm-3">Phone</dt>
-									<dd className="col-sm-9">+1 123 456 78900</dd>
-
-									<dt className="col-sm-3">Home address</dt>
-									<dd className="col-sm-9">
-										<address className="mb-0">
-											2983 Heavner Court
-											<br />
-											Garden City, NY 11530
-										</address>
-									</dd>
-
-									<dt className="col-sm-3">Email address</dt>
-									<dd className="col-sm-9">
-										<a href="mailto:aang.is.kefy@gmail.com">aang.is.kefy@gmail.com</a>
-									</dd>
-								</dl>
-
-								<h6 className="text-uppercase font-weight-light text-secondary">Basic Information</h6>
-								<dl className="row mt-4 mb-4 pb-3">
-									<dt className="col-sm-3">Birthday</dt>
-									<dd className="col-sm-9">January 21, 1991</dd>
-
-									<dt className="col-sm-3">Gender</dt>
-									<dd className="col-sm-9">Male</dd>
-								</dl>
+								<div className="row">
+									<div className="col-md-6">
+										<label>User Id</label>
+									</div>
+									<div className="col-md-6">
+										<p>Kshiti123</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>Name</label>
+									</div>
+									<div className="col-md-6">
+										<p>Kshiti Ghelani</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>Email</label>
+									</div>
+									<div className="col-md-6">
+										<p>kshitighelani@gmail.com</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>Phone</label>
+									</div>
+									<div className="col-md-6">
+										<p>123 456 7890</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>Profession</label>
+									</div>
+									<div className="col-md-6">
+										<p>Web Developer and Designer</p>
+									</div>
+								</div>
 							</div>
 							<div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-								<table className="table">
-									<thead>
-										<tr>
-											<th scope="col">Nombre del Servicio</th>
-											<th scope="col">Fecha</th>
-											<th scope="col">Solicitante</th>
-											<th scope="col">Descripción</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-								...
+								<div className="row">
+									<div className="col-md-6">
+										<label>Experience</label>
+									</div>
+									<div className="col-md-6">
+										<p>Expert</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>Hourly Rate</label>
+									</div>
+									<div className="col-md-6">
+										<p>10$/hr</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>Total Projects</label>
+									</div>
+									<div className="col-md-6">
+										<p>230</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>English Level</label>
+									</div>
+									<div className="col-md-6">
+										<p>Expert</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-6">
+										<label>Availability</label>
+									</div>
+									<div className="col-md-6">
+										<p>6 months</p>
+									</div>
+								</div>
+								<div className="row">
+									<div className="col-md-12">
+										<label>Your Bio</label>
+										<br />
+										<p>Your detail description</p>
+									</div>
+								</div>
 							</div>
 						</div>
-					</section>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 };
