@@ -28,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				all_categories: [],
 				all_regions: [] // se utiliza la region para hacer fetch y determinar cuales son las comunas de esa region
 			},
-			comunas: [{ name: "ñuñoa", id: 1 }], // se obtienen comunas solo de la region seleccionada por el usuario.
+			comunas: [], // se obtienen comunas solo de la region seleccionada por el usuario.
 			toast_news: {},
 			form_api_error: {}
 		},
@@ -113,12 +113,93 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			get_comunas: regionID => {
+				//se debe enviar el ID de la región a consultar, seleccionada por el usuario en los formularios
+				fetch(`${API_URL}/region/${regionID}/comunas`, {
+					headers: { "Content-Type": "application/json" },
+					mode: "cors"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						setStore({ comunas: data.comunas });
+					})
+					.catch(error => {
+						if (error.name === "TypeError") {
+							getActions().display_toast(connect_error_msg);
+						}
+					});
+			},
+
+			create_service_request: request_data => {
+				const store = getStore();
+				fetch(API_URL + "/service-request/create", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.access_token
+					},
+					mode: "cors",
+					body: JSON.stringify({
+						name: request_data.name,
+						description: request_data.description,
+						street: request_data.street,
+						home_number: request_data.home_number,
+						more_info: request_data.more_info,
+						comuna: request_data.comuna,
+						category: request_data.category
+					})
+				})
+					.then(response => {
+						if (
+							!response.ok &&
+							!response.status === "400" &&
+							!response.status === "404" &&
+							!response.status === "401"
+						) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						//eslint-disable-next-line
+						console.log(data);
+						if ("Error" in data) {
+							getActions().display_toast({
+								msg: data.Error,
+								bg: "bg-danger",
+								status: "Error"
+							});
+						} else {
+							getActions().display_toast({
+								msg: data.Success,
+								bg: "bg-success",
+								status: "Éxito"
+							});
+						}
+					})
+					.catch(error => {
+						if (error.name === "TypeError") {
+							getActions().display_toast(connect_error_msg);
+						}
+						//eslint-disable-next-line
+						console.log(error);
+					});
+			},
+
 			login: credentials => {
 				fetch(API_URL + "/login", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					mode: "cors",
-					body: JSON.stringify({ email: credentials.email, password: credentials.password })
+					body: JSON.stringify({
+						email: credentials.email,
+						password: credentials.password
+					})
 				})
 					.then(response => {
 						if (!response.ok && !response.status === "400" && !response.status === "404") {

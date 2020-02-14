@@ -36,8 +36,7 @@ export const ServiceForm = () => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		//eslint-disable-next-line
-		console.log(state);
+		actions.create_service_request(state);
 	};
 
 	const select_category = id => {
